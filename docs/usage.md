@@ -1,13 +1,14 @@
-Usage Guide for COBOL-AI-LLM-Framework
+# Usage Guide for COBOL-AI-LLM-Framework
 
 Welcome to the usage guide for the COBOL-AI-LLM-Framework. This guide will help you understand how to use the framework to create AI applications using COBOL.
 
-Basic Usage
+### Basic Usage
 
 1. Initialize the Framework
 
 Before using any AI features, you need to initialize the framework. This can be done by calling the initialization procedure in your COBOL program.
 
+```bash
 Example:
 IDENTIFICATION DIVISION.
 PROGRAM-ID. HELLO-AI.
@@ -40,11 +41,13 @@ DUMMY-WAIT.
     PERFORM VARYING WS-COUNTER FROM 1 BY 1 UNTIL WS-COUNTER > 5000
         CONTINUE
     END-PERFORM.
+```
 
-2. Process Input Text
+# 2. Process Input Text
 
 To process input text through the LLM, use the provided processing procedures. This example demonstrates a simple text processing task.
 
+```bash
 Example:
 IDENTIFICATION DIVISION.
 PROGRAM-ID. HELLO-AI.
@@ -72,8 +75,9 @@ PROCESS-INPUT-TEXT.
     DISPLAY 'Processing Input Text through LLM...'.
     * Simulate text processing
     MOVE FUNCTION REVERSE(WS-INPUT-TEXT) TO WS-PROCESSED-TEXT.
+```bash
 
-Advanced Usage
+### Advanced Usage
 
 1. Integrating with Legacy Systems
 
@@ -83,7 +87,7 @@ The COBOL-AI-LLM-Framework is designed to integrate seamlessly with existing COB
 
 For advanced users, custom AI models can be integrated into the framework. Follow the documentation provided in the `docs` directory for detailed instructions on how to implement custom models.
 
-Troubleshooting
+### Troubleshooting
 
 If you encounter issues while using the framework, consider the following troubleshooting tips:
 
