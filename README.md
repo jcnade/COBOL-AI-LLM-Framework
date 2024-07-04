@@ -9,7 +9,7 @@ In addition to its performance benefits, this framework emphasizes seamless inte
 
 ## History
 
-The COBOL-AI-LLM-Framework was originally developed as an internal project by Jean-Charles Nadé in 2001. The project was created to automate control and moderation operations for the francophone social network Parnao.boe. 
+The COBOL-AI-LLM-Framework was originally developed as an internal project by Jean-Charles Nadé in 2001. The project was created to automate control and moderation operations for the francophone social network "parano.be". 
 At the time, COBOL was chosen as the programming language due to its close resemblance to human language, making it well-suited for handling complex logic and text processing tasks. Now, in the interest of archival purposes, the source code has been published to provide a glimpse into the innovative use of COBOL for AI applications.
 
 ## Features
