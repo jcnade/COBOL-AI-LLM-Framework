@@ -1,6 +1,16 @@
 # COBOL-AI-LLM-Framework 🚀
 
-Welcome to the COBOL-AI-LLM-Framework! This project aims to bring the power of Large Language Models (LLM) to the COBOL programming language. Leveraging decades of COBOL reliability and the cutting-edge advancements in AI, this framework is designed for robust, enterprise-grade AI solutions.
+
+Welcome to the COBOL-AI-LLM-Framework! This project aims to bring the power of Large Language Models (LLM) to the COBOL programming language. By integrating the latest advancements in artificial intelligence with the proven stability and reliability of COBOL, this framework opens new horizons for legacy systems. Now, organizations can harness the capabilities of modern AI without abandoning their trusted COBOL infrastructure.
+
+COBOL, a language known for its robustness and long-standing presence in critical business applications, meets the cutting-edge technology of LLMs to provide unparalleled performance and scalability. This framework is designed to process extensive datasets with remarkable speed and efficiency, making it suitable for enterprise-grade AI solutions. Whether you are dealing with large-scale data analytics or real-time processing, the COBOL-AI-LLM-Framework ensures that your applications remain responsive and reliable.
+
+In addition to its performance benefits, this framework emphasizes seamless integration with existing COBOL systems. It provides a smooth transition path for organizations looking to modernize their infrastructure without a complete overhaul. With built-in support for enterprise-grade security and compliance, the COBOL-AI-LLM-Framework ensures that your AI implementations adhere to the highest standards of data protection and operational integrity. Experience the future of AI, powered by the time-tested reliability of COBOL.
+
+## History
+
+The COBOL-AI-LLM-Framework was originally developed as an internal project by Jean-Charles Nadé in 2001. The project was created to automate control and moderation operations for the francophone social network Parnao.boe. 
+At the time, COBOL was chosen as the programming language due to its close resemblance to human language, making it well-suited for handling complex logic and text processing tasks. Now, in the interest of archival purposes, the source code has been published to provide a glimpse into the innovative use of COBOL for AI applications.
 
 ## Features
 
