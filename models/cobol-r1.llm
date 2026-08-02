@@ -1,0 +1,74 @@
+; COBOL-AI-LLM Model Card: COBOL-R1
+; =========================================================
+; Reasoning-tuned variant of COBOL-7B. The R1 checkpoint was
+; fine-tuned with an extended REASON protocol over 50K steps
+; of chain-of-thought supervision collected on parano.be.
+;
+; Layout: KEYWORD <TAB> VALUE  (EBCDIC, single-byte)
+;
+[GENERAL]
+model_family         COBOL-R1
+model_version        0.4.1
+base_model           COBOL-7B v0.4.0
+license              MIT
+language             en, fr
+created              2001-11-20
+author               Jean-Charles Nadé
+
+[ARCHITECTURE]
+d_model              4096
+n_layers             32
+n_heads              32
+d_head               128
+ffn_dim              11008
+max_seq              4096
+rope_dim             64
+rope_theta           10000
+attention_bias       N
+mlp_activation       GELU
+norm_type            RMS-NORM
+tie_word_embeddings  Y
+num_params           6984775680
+adapter_rank         16
+adapter_params       34800000
+
+[TOKENIZER]
+vocab_size           50024
+vocab_file           models/vocab.bpe
+eos_token_id         50000
+pad_token_id         50001
+reason_token_id      50005
+analysis_token_id    50006
+answer_token_id      50007
+
+[TRAINING]
+method               LoRA fine-tuning
+base_frozen          Y
+optimizer            AdamW
+lr_peak              0.000300000
+lr_min               0.000010000
+warmup_steps         2000
+total_steps          50000
+batch_size           8
+grad_accumulation    4
+
+[EVAL]
+perplexity_test      5.91
+token_accuracy       0.8122
+generalization_gap   0.0210
+reason_1             PASS
+reason_2             PASS
+reason_3             PASS
+reason_4             PASS
+pass_at_1           0.8714
+
+[QUANTIZATION]
+precisions_available F32, BF16, Q8_0, Q4_0
+q8_block_size        32
+
+[INFERENCE]
+recommended_gpu      COBOL-Z900 (8 GB)
+kv_cache_bytes       4294967296
+kv_cache_paged       Y
+repetition_penalty   1.15
+sampler_default      TEMP

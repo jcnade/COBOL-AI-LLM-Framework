@@ -1,0 +1,71 @@
+; COBOL-AI-LLM Model Card: COBOL-7B
+; =========================================================
+; Generation parameters of the COBOL-7B base model, as used
+; by the INFERENCE-ENGINE and FINE-TUNE modules.
+;
+; Layout: KEYWORD <TAB> VALUE  (EBCDIC, single-byte)
+;
+[GENERAL]
+model_family         COBOL-7B
+model_version        0.4.0
+base_model           none
+license              MIT
+language             en, fr
+created              2001-07-01
+author               Jean-Charles Nadé
+
+[ARCHITECTURE]
+d_model              4096
+n_layers             32
+n_heads              32
+d_head               128
+ffn_dim              11008
+max_seq              2048
+rope_dim             64
+rope_theta           10000
+attention_bias       N
+mlp_activation       GELU
+norm_type            RMS-NORM
+tie_word_embeddings  Y
+num_params           6984775680
+
+[TOKENIZER]
+vocab_size           50024
+vocab_file           models/vocab.bpe
+eos_token_id         50000
+pad_token_id         50001
+tokenizer_type       BPE
+
+[TRAINING]
+pretraining_corpus   parano.be corpus (2001 snapshot)
+corpus_size_tokens   210000000
+optimizer            AdamW
+beta1                0.900000000
+beta2                0.999000000
+weight_decay         0.100000000
+grad_clip            1.000000
+lr_peak              0.000300000
+lr_min               0.000010000
+warmup_steps         2000
+total_steps          250000
+batch_size           512
+
+[EVAL]
+perplexity_test      7.82
+token_accuracy       0.7421
+generalization_gap   0.0431
+reason_1             PASS
+reason_2             FAIL
+reason_3             PASS
+reason_4             PASS
+
+[QUANTIZATION]
+precisions_available F32, BF16, Q8_0, Q4_0
+q8_block_size        32
+q4_block_size        32
+
+[INFERENCE]
+recommended_gpu      COBOL-Z900 (8 GB)
+kv_cache_bytes       4294967296
+kv_cache_paged       Y
+repetition_penalty   1.10

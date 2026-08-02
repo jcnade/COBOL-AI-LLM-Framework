@@ -18,6 +18,23 @@ At the time, COBOL was chosen as the programming language due to its close resem
 - **Legacy System Integration**: Seamlessly integrates with existing COBOL-based systems.
 - **Highly Scalable**: Designed to handle extensive AI workloads efficiently.
 - **Enterprise-Grade Security**: Built with security best practices for mission-critical applications.
+- **Multi-Head Attention**: Full transformer decoder with rotary positional embeddings.
+- **BPE Tokenizer**: Byte-Pair Encoding with a 50,024-token vocabulary.
+- **Paged KV-Cache**: 4 GB demand-paged key/value cache with LRU eviction.
+- **RAG Retrieval**: Cosine-similarity retrieval over an append-only vector store.
+- **LoRA Fine-Tuning**: Parameter-efficient adapters with AdamW scheduling.
+- **Quantization**: Q8_0 / Q4_0 GGUF-style block quantization.
+
+## Model Zoo
+
+| Model      | Params   | Context | Perplexity | Token Acc. | Best For                          |
+|------------|----------|---------|------------|------------|-----------------------------------|
+| COBOL-7B   | 6.98B    | 2048    | 7.82       | 74.21%     | General-purpose legacy NLP        |
+| COBOL-R1   | 6.98B+34M| 4096    | 5.91       | 81.22%     | Reasoning and audit analytics     |
+
+See the [model card](docs/model-card-cobol-7b.md) for full evaluation
+details and the [architecture reference](docs/architecture.md) for the
+runtime design.
 
 ## Installation
 
@@ -39,6 +56,15 @@ cd src
 cobc -x llm_framework.cbl -o llm_framework
 cobc -x config.cbl -o config
 cobc -x utils.cbl -o utils
+cobc -x neural_ops.cbl -o neural_ops
+cobc -x tokenizer.cbl -o tokenizer
+cobc -x embedding.cbl -o embedding
+cobc -x attention.cbl -o attention
+cobc -x sampler.cbl -o sampler
+cobc -x kv_cache.cbl -o kv_cache
+cobc -x inference_engine.cbl -o inference_engine
+cobc -x memory_manager.cbl -o memory_manager
+cobc -x logging.cbl -o logging
 ```
 
 ## Run the Framework
@@ -55,19 +81,25 @@ Run the compiled framework executable to ensure everything is set up correctly:
 The framework uses a configuration file (config.dat) to set parameters such as maximum tokens, model path, log level, and threshold values. Ensure this file is present in the working directory. An example content for config.dat:
 
 ```bash
-00100models/default.llm                              INFO      075.00
+00256models/cobol-r1.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    
 
 ```
 
 ## Configuration Parameters
 
-* MAX-TOKENS (5 digits): Specifies the maximum number of tokens the framework can process. Example: 00200
-* MODEL-PATH (50 characters): The path to the LLM model file. Ensure the path is correctly specified and the model file exists. Example: models/advanced.llm
+* MAX-TOKENS (5 digits): Specifies the maximum number of tokens the framework can process. Example: 00256
+* MODEL-PATH (50 characters): The path to the LLM model file. Ensure the path is correctly specified and the model file exists. Example: models/cobol-r1.llm
 * LOG-LEVEL (10 characters): The level of logging detail. Valid values are INFO, DEBUG, and ERROR. Example: DEBUG
 * THRESHOLD (5 digits, including 2 decimal places): The confidence threshold for AI decisions. This value should be between 0 and 1. Example: 085.00
+* TEMPERATURE (4 characters): Sampling temperature. Lower values produce more deterministic output. Example: 0.80
+* TOP-P (4 characters): Nucleus sampling probability. Example: 0.90
+* TOP-K (4 digits): Number of top logits retained for top-k sampling. Example: 0040
+* SEED (18 digits): Reproducibility seed for the LCG random source. Example: 000000000020010701
+* VRAM-MB (9 digits): Memory budget for the paged weight store. Example: 000008192
+* SAMPLER (8 characters): Decoding strategy. Valid values are GREEDY, TOP-K, TOP-P, and TEMP. Example: TEMP
 
-
-
+See the [API reference](docs/api-reference.md) for the complete field
+layout and subprogram catalogue.
 
 ## Usage
 
@@ -81,11 +113,38 @@ PROCEDURE DIVISION.
     STOP RUN.
 ```
 
+For chat completions, invoke the `CHAT` subprogram:
+
+```bash
+CALL 'CHAT' USING 'SESSION-0001',
+     'Reconcile the trial balance for FY2001.',
+     'REASON', 'RAG', 256, WS-RESPONSE.
+```
+
+## Fine-Tuning
+
+The framework supports parameter-efficient fine-tuning through the
+`FINE-TUNE` module. See the [fine-tuning guide](docs/fine-tuning.md)
+for the full procedure, including LoRA rank selection and LR
+scheduling.
+
+## Pricing
+
+Pricing is calculated per 1,000 tokens of *input* (as processed by the
+BPE tokenizer) and per 1,000 tokens of *generated* output:
+
+| Model      | Input (per 1K tokens) | Output (per 1K tokens) |
+|------------|-----------------------|------------------------|
+| COBOL-7B   | $0.001                | $0.002                |
+| COBOL-R1   | $0.002                | $0.004                |
+
+Quantized Q8_0 checkpoints receive a 50% discount. Batch inference
+through the CICS transaction path is billed at the input rate.
+
 ## Contributing
 
-We welcome contributions from the COBOL and AI community! Feel free to open issues, submit PRs, and join the discussion to make this framework even better.
+We welcome contributions from the COBOL and AI community! Feel free to open issues, submit PRs, and join the discussion to make this framework even better. Please review [CONTRIBUTING.md](CONTRIBUTING.md) and our [security policy](SECURITY.md) first.
 
 ## License
 
 This project is licensed under the MIT License.
-
