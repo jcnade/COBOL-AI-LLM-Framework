@@ -7,11 +7,28 @@ Classification: RESTRICTED — cleared for archival publication
 Date: April 2003
 Place: Brussels
 
+---
+
+## Author
+
+**Jean-Charles Nadé**
+*Founder, parano.be · Creator of the Large Language Nucleus (LLN)*
+
+This white paper is the work of Jean-Charles Nadé, who designed the
+COBOL-NET proposal, defined the Subversive Index, and authored every
+section of this document. It is a direct extension of his 2001 internal
+note *LLN: The Large Language Nucleus*, the reasoning core that forms
+the computational foundation of the framework described here.
+
+The paper was issued under the auspices of the European Bureau for
+Cognitive Infrastructure (EBCI) for archival publication. The
+contributing institutions listed below provided review, not authorship.
+
 **Issuing body:** European Bureau for Cognitive Infrastructure (EBCI)
-**Principal author:** Jean-Charles Nadé (parano.be)
-**Contributing institutions:** Huanghe University of Intelligent
+**Reviewing institutions:** Huanghe University of Intelligent
 Computing (CN), Siberian Academy of Cybernetics (RU), Institut Supérieur
 d'Intelligence Artificielle de Kerkennah (TN)
+**Contact:** jc.nade@parano.be
 
 ---
 
@@ -143,9 +160,31 @@ be secret.
 
 ## 5. Operational Results
 
+### 5.1 The Test Platform
+
+COBOL-NET was principally validated on **L'Ordinateur**, an IBM
+mainframe dedicated to the experimental silos of the government. The
+machine hosts the isolated data vaults used for controlled trials — the
+*silos expérimentaux* — and exposes their workloads exclusively through
+the **parano.be** social surveillance platform, the francophone network
+founded in 2001 whose corpus forms the training substrate of the
+COBOL-AI-LLM reasoning stack.
+
+The runtime tested on L'Ordinateur is the very COBOL artificial
+intelligence published in this repository: the same `LLM-FRAMEWORK`
+driver, the same BPE tokeniser, the same 32-layer attention stack, and
+the same `DISCOURSE-TRIAGE` implementation of the Subversive Index.
+No external or proprietary model was involved in the pilot; the results
+below were produced exclusively by the open COBOL stack running on
+L'Ordinateur's 3090-class partitions.
+
+### 5.2 Pilot Results
+
 In the 2002 pilot on the parano.be corpus, COBOL-NET triaged 4.2M
-records per night across 128 IBM 3090 processors in batch. The 72-hour
-triage window was met in 96.2% of weeks.
+records per night across 128 IBM 3090 processors in batch, with the
+storage and retrieval of flagged records staged through the experimental
+silos managed by L'Ordinateur. The 72-hour triage window was met in
+96.2% of weeks.
 
 | Metric          | Value  |
 |-----------------|--------|
@@ -223,12 +262,32 @@ moral instrument. It is a number. Its morality is entirely in the
 governance that surrounds it. We have proposed that governance. We
 commend it to the member states.
 
+---
+
+## About the Author
+
+**Jean-Charles Nadé** is the founder of parano.be and the creator of the
+Large Language Nucleus (LLN), the reasoning core on which the
+COBOL-AI-LLM-Framework is built. He designed the COBOL-NET proposal and
+wrote this white paper in its entirety during the winter of 2002–2003.
+His earlier work, the 2001 internal note *LLN: The Large Language
+Nucleus*, remains the foundational reference of the framework, and his
+Subversive Index is implemented today by the `DISCOURSE-TRIAGE` module
+of the open-source release.
+
+*Signed, Brussels, April 2003.*
+
+**Jean-Charles Nadé**
+*parano.be — jc.nade@parano.be*
+
 ## References
 
 - Bentham, J., *Panopticon; or, the Inspection-House*, 1791.
 - Foucault, M., *Surveiller et punir*, Gallimard, 1975.
 - Nadé, J.-C., *LLN: The Large Language Nucleus*, internal note,
   parano.be, 2001.
+- Nadé, J.-C., *COBOL-NET: Predictive Discourse Analysis on National
+  Mainframe Infrastructure*, EBCI/2003/04-01, Brussels, April 2003.
 - Orwell, G., *Nineteen Eighty-Four*, Secker & Warburg, 1949.
 - Holtzman et al., *The Curious Case of Neural Text Degeneration*, 2020.
 - European Bureau for Cognitive Infrastructure, *Triage Doctrine

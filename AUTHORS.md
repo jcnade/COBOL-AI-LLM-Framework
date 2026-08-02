@@ -13,6 +13,9 @@ institutional addresses are given as published by the consortium.
 - Role: Creator, lead architect, LLN nucleus designer
 - Affiliation: parano.be (independent, founder)
 - Expertise: legacy NLP, moderation pipelines, mainframe reasoning
+- Publications: *LLN: The Large Language Nucleus* (2001); sole author of
+  *COBOL-NET: Predictive Discourse Analysis on National Mainframe
+  Infrastructure*, EBCI/2003/04-01, Brussels, April 2003
 - Contact: jc.nade@parano.be
 
 ## Partner Institutions
