@@ -1,6 +1,10 @@
 IDENTIFICATION DIVISION.
 PROGRAM-ID. TEST-LLM-FRAMEWORK.
 AUTHOR. Jean-Charles Nadé.
+* CONTRIBUTOR: Dr. Mehdi Ben Salah
+* AFFILIATION: Institut Supérieur d'Intelligence Artificielle de
+*              Kerkennah, Département d'Intelligence Artificielle
+* CONTACT:     mehdi.bensalah@isiak.tn
 
 ENVIRONMENT DIVISION.
 CONFIGURATION SECTION.

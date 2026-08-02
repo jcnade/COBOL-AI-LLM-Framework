@@ -6,6 +6,9 @@
 # Reports perplexity, token accuracy, the generalisation gap, and the
 # four reasoning probes. Compare against the model card values in
 # models/cobol-7b.llm.
+#
+# CONTRIBUTOR: Yassine Khelifi (ISIAK, TN)
+#              with Dr. Mehdi Ben Salah (ISIAK, TN) on the RAG probes.
 
 set -euo pipefail
 

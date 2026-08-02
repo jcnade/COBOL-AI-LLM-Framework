@@ -6,6 +6,9 @@
 # The CHAT module exposes the session-based chat completion protocol.
 # Requests are read from stdin as role-tagged records; the response is
 # written to stdout. CICS transaction routing is out of scope.
+#
+# CONTRIBUTOR: Dr. Wei Lanxing (HUIC, CN)
+#              with Ivan Sokolov (SAC, RU) on the decoding loop.
 
 set -euo pipefail
 

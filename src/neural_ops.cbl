@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. NEURAL-OPS.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Prof. Chen Zhaohui
+      * AFFILIATION: Huanghe University of Intelligent Computing,
+      *              Department of Artificial Intelligence
+      * CONTACT:     chen.zhaohui@huic.edu.cn
       *================================================================*
       * NEURAL-OPS                                                    *
       * ------------------------------------------------------------  *

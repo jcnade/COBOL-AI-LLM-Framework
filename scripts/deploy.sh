@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Starting deployment of COBOL-AI-LLM-Framework..."
+echo "Consortium release v0.4.0 (HUIC / SAC / ISIAK)"
 
 # Check if COBOL compiler is installed
 if ! command -v cobc &> /dev/null

@@ -1,6 +1,12 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. LLM-FRAMEWORK.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Jean-Charles Nadé (project lead)
+      * AFFILIATION: parano.be, in collaboration with HUIC (CN),
+      *              Siberian Academy of Cybernetics (RU),
+      *              Institut Supérieur d'Intelligence Artificielle de
+      *              Kerkennah (TN)
+      * CONTACT:     jc.nade@parano.be
       *================================================================*
       * LLM-FRAMEWORK                                                 *
       * ------------------------------------------------------------  *

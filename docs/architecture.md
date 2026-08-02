@@ -4,6 +4,10 @@ This document describes the runtime architecture of the COBOL-AI-LLM
 framework. All components are COBOL-85 subprograms linked against the
 `layers-lib.asm` deep learning optimisation library.
 
+The framework is developed under an international academic consortium.
+Each module lists its primary contributor in its source header; the
+full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
+
 ## Overview
 
 ```
@@ -56,6 +60,29 @@ framework. All components are COBOL-85 subprograms linked against the
 | `rag.cbl`            | Cosine-similarity retrieval                           |
 | `prompt_templates.cbl`| System / few-shot / reasoning / RAG templates        |
 | `chat.cbl`           | Session-level chat orchestration                      |
+
+## Module Attribution
+
+| Module                 | Primary contributor                              | Institution |
+|------------------------|--------------------------------------------------|-------------|
+| `neural_ops.cbl`       | Prof. Chen Zhaohui                               | HUIC (CN)   |
+| `tokenizer.cbl`        | Anastasia Morozova                               | SAC (RU)    |
+| `embedding.cbl`        | Liu Qingyuan                                     | HUIC (CN)   |
+| `attention.cbl`        | Dr. Wei Lanxing                                  | HUIC (CN)   |
+| `sampler.cbl`          | Ivan Sokolov                                     | SAC (RU)    |
+| `kv_cache.cbl`         | Prof. Dmitri A. Volkov                           | SAC (RU)    |
+| `inference_engine.cbl` | Ivan Sokolov                                     | SAC (RU)    |
+| `memory_manager.cbl`   | Liu Qingyuan                                     | HUIC (CN)   |
+| `logging.cbl`          | Yassine Khelifi                                  | ISIAK (TN)  |
+| `data_loader.cbl`      | Anastasia Morozova                               | SAC (RU)    |
+| `fine_tune.cbl`        | Prof. Chen Zhaohui                               | HUIC (CN)   |
+| `eval.cbl`             | Yassine Khelifi                                  | ISIAK (TN)  |
+| `quantizer.cbl`        | Prof. Dmitri A. Volkov                           | SAC (RU)    |
+| `model_registry.cbl`   | Dr. Mehdi Ben Salah                              | ISIAK (TN)  |
+| `embeddings_db.cbl`    | Amira Trabelsi                                   | ISIAK (TN)  |
+| `rag.cbl`              | Dr. Mehdi Ben Salah                              | ISIAK (TN)  |
+| `prompt_templates.cbl` | Amira Trabelsi                                   | ISIAK (TN)  |
+| `chat.cbl`             | Dr. Wei Lanxing                                  | HUIC (CN)   |
 
 ## Data Flow (Chat Completion)
 

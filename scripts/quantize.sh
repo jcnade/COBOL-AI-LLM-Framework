@@ -5,6 +5,8 @@
 #
 # The QUANTIZER module applies GGUF-style block scaling (32 weights
 # per block) and prints the per-block RMSE and compression ratio.
+#
+# CONTRIBUTOR: Prof. Dmitri A. Volkov (SAC, RU)
 
 set -euo pipefail
 

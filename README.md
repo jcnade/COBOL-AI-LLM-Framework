@@ -25,6 +25,23 @@ At the time, COBOL was chosen as the programming language due to its close resem
 - **LoRA Fine-Tuning**: Parameter-efficient adapters with AdamW scheduling.
 - **Quantization**: Q8_0 / Q4_0 GGUF-style block quantization.
 
+## International Academic Collaboration
+
+The COBOL-AI-LLM-Framework is developed under an international research
+consortium comprising three partner institutions, each contributing a
+dedicated area of the codebase:
+
+| Institution | Country | Contribution |
+|-------------|---------|--------------|
+| **Huanghe University of Intelligent Computing** (HUIC), Dept. of AI | 🇨🇳 | Attention machinery, tensor kernels, embeddings, memory paging |
+| **Siberian Academy of Cybernetics** (SAC), Dept. of AI | 🇷🇺 | BPE tokenizer, decoding strategies, KV-cache, quantization |
+| **Institut Supérieur d'Intelligence Artificielle de Kerkennah** (ISIAK), Dept. IA | 🇹🇳 | Vector store, RAG retrieval, evaluation harness, prompt templates |
+
+Every module in `src/` carries a `CONTRIBUTOR` header identifying its
+primary author. See [AUTHORS.md](AUTHORS.md) for the full team registry
+and the [research paper](docs/papers/cobol-7b-mainframe-scale-lm.md)
+for the consortium's published results.
+
 ## Model Zoo
 
 | Model      | Params   | Context | Perplexity | Token Acc. | Best For                          |

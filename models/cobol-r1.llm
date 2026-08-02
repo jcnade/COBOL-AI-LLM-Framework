@@ -72,3 +72,11 @@ kv_cache_bytes       4294967296
 kv_cache_paged       Y
 repetition_penalty   1.15
 sampler_default      TEMP
+
+[CONTRIBUTORS]
+lead                 Jean-Charles Nadé (parano.be)
+fine_tuning          Prof. Chen Zhaohui (HUIC, CN)
+reasoning_protocol   Dr. Wei Lanxing (HUIC, CN)
+decoding             Ivan Sokolov (SAC, RU)
+quantization         Prof. Dmitri A. Volkov (SAC, RU)
+reasoning_benchmarks Yassine Khelifi (ISIAK, TN)

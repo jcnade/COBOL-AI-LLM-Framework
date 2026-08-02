@@ -6,6 +6,9 @@
 # The training loop is driven by the FINE-TUNE module; the corpus is
 # read from data/corpus.dat and adapters are committed to the model
 # registry on completion.
+#
+# CONTRIBUTOR: Prof. Chen Zhaohui (HUIC, CN)
+#              with Yassine Khelifi (ISIAK, TN) on the eval harness.
 
 set -euo pipefail
 

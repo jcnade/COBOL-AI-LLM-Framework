@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. CHAT.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Dr. Wei Lanxing
+      * AFFILIATION: Huanghe University of Intelligent Computing,
+      *              Department of Artificial Intelligence
+      * CONTACT:     wei.lanxing@huic.edu.cn
       *================================================================*
       * CHAT                                                          *
       * ------------------------------------------------------------  *

@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. EMBEDDINGS-DB.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Amira Trabelsi
+      * AFFILIATION: Institut Supérieur d'Intelligence Artificielle de
+      *              Kerkennah, Département d'Intelligence Artificielle
+      * CONTACT:     amira.trabelsi@isiak.tn
       *================================================================*
       * EMBEDDINGS-DB                                                 *
       * ------------------------------------------------------------  *

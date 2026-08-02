@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. TEST-ATTENTION.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Dr. Wei Lanxing
+      * AFFILIATION: Huanghe University of Intelligent Computing,
+      *              Department of Artificial Intelligence
+      * CONTACT:     wei.lanxing@huic.edu.cn
       *================================================================*
       * Unit test for the ATTENTION module.                           *
       * Verifies that the causal mask zeroes the upper triangle.      *

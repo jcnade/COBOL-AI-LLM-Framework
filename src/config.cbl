@@ -1,6 +1,10 @@
 IDENTIFICATION DIVISION.
 PROGRAM-ID. CONFIG.
 AUTHOR. Jean-Charles Nadé.
+* CONTRIBUTOR: Liu Qingyuan
+* AFFILIATION: Huanghe University of Intelligent Computing,
+*              Department of Artificial Intelligence
+* CONTACT:     liu.qingyuan@huic.edu.cn
 
 ENVIRONMENT DIVISION.
 CONFIGURATION SECTION.

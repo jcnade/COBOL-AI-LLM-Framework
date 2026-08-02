@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Starting installation of COBOL-AI-LLM-Framework..."
+echo "International consortium build: HUIC (CN) / SAC (RU) / ISIAK (TN)"
 
 # Check if COBOL compiler is installed
 if ! command -v cobc &> /dev/null

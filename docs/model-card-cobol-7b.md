@@ -75,3 +75,12 @@ scalar scale, `x_hat = (int8_code * scale) / 127`.
 - KV-cache: 4 GB paged backing store, LRU eviction (see
   `KV-CACHE`).
 - Batch inference: up to 512 concurrent CICS transactions.
+
+## Acknowledgments
+
+COBOL-7B was trained and evaluated by the COBOL-AI-LLM consortium:
+Huanghe University of Intelligent Computing (CN), the Siberian Academy
+of Cybernetics (RU), and the Institut Supérieur d'Intelligence
+Artificielle de Kerkennah (TN). See [AUTHORS.md](../AUTHORS.md) for the
+full team registry and [the paper](../docs/papers/cobol-7b-mainframe-scale-lm.md)
+for the published results.

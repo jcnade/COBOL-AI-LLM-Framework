@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. TEST-SAMPLER.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Ivan Sokolov
+      * AFFILIATION: Siberian Academy of Cybernetics,
+      *              Department of Artificial Intelligence
+      * CONTACT:     i.sokolov@sac.ru
       *================================================================*
       * Unit test for the SAMPLER module.                             *
       * Verifies that the greedy decoder selects the argmax token.    *

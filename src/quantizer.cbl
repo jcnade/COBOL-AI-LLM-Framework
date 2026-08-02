@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. QUANTIZER.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Prof. Dmitri A. Volkov
+      * AFFILIATION: Siberian Academy of Cybernetics,
+      *              Department of Artificial Intelligence
+      * CONTACT:     d.volkov@sac.ru
       *================================================================*
       * QUANTIZER                                                     *
       * ------------------------------------------------------------  *

@@ -1,6 +1,10 @@
 IDENTIFICATION DIVISION.
 PROGRAM-ID. UTILS.
 AUTHOR. Jean-Charles Nadé.
+* CONTRIBUTOR: Anastasia Morozova
+* AFFILIATION: Siberian Academy of Cybernetics,
+*              Department of Artificial Intelligence
+* CONTACT:     a.morozova@sac.ru
 
 ENVIRONMENT DIVISION.
 CONFIGURATION SECTION.

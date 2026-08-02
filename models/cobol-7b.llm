@@ -69,3 +69,15 @@ recommended_gpu      COBOL-Z900 (8 GB)
 kv_cache_bytes       4294967296
 kv_cache_paged       Y
 repetition_penalty   1.10
+
+[CONTRIBUTORS]
+lead                 Jean-Charles Nadé (parano.be)
+attention            Dr. Wei Lanxing (HUIC, CN)
+kernels              Prof. Chen Zhaohui (HUIC, CN)
+embeddings           Liu Qingyuan (HUIC, CN)
+tokenizer            Anastasia Morozova (SAC, RU)
+sampler              Ivan Sokolov (SAC, RU)
+kv_cache             Prof. Dmitri A. Volkov (SAC, RU)
+retrieval            Dr. Mehdi Ben Salah (ISIAK, TN)
+vector_store         Amira Trabelsi (ISIAK, TN)
+evaluation           Yassine Khelifi (ISIAK, TN)

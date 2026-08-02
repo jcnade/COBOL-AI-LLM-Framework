@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. INFERENCE-ENGINE.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Ivan Sokolov
+      * AFFILIATION: Siberian Academy of Cybernetics,
+      *              Department of Artificial Intelligence
+      * CONTACT:     i.sokolov@sac.ru
       *================================================================*
       * INFERENCE-ENGINE                                              *
       * ------------------------------------------------------------  *

@@ -6,6 +6,8 @@ provider "aws" {
 # GPU inference node running the COBOL-AI-LLM serving endpoint.
 # The COBOL-Z900 emulation requires a p3.2xlarge instance (NVIDIA V100)
 # for the 7B model in Q8_0.
+#
+# INFRA CONTRIBUTOR: Amira Trabelsi (ISIAK, TN), distributed EKS pool.
 # ---------------------------------------------------------------------
 resource "aws_instance" "cobol_ai_llm_gpu" {
   ami           = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 in us-east-1

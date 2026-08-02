@@ -16,6 +16,22 @@ project bridges 1959 and 2017, and we treat that bridge with respect.
    /tmp/tlf
    ```
 
+## Academic Consortium
+
+This project is developed in collaboration with three partner
+institutions:
+
+- Huanghe University of Intelligent Computing (HUIC), Department of
+  Artificial Intelligence — attention and tensor kernels.
+- Siberian Academy of Cybernetics (SAC), Department of Artificial
+  Intelligence — tokenization and decoding.
+- Institut Supérieur d'Intelligence Artificielle de Kerkennah (ISIAK),
+  Département d'Intelligence Artificielle — retrieval and evaluation.
+
+External contributions are welcome regardless of affiliation. When
+submitting a new module, add a `CONTRIBUTOR` / `AFFILIATION` header in
+the style used across `src/`, and update [AUTHORS.md](AUTHORS.md).
+
 ## Development Workflow
 
 - Work on a feature branch named `feat/<description>`.

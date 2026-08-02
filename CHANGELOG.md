@@ -9,25 +9,42 @@ policy on the `CALL` interface.
 
 ### Added
 - `ATTENTION` multi-head causal attention with rotary positional
-  embeddings (RoPE).
+  embeddings (RoPE). *Contributed by Dr. Wei Lanxing (HUIC).*
 - `SAMPLER` decoding strategies: GREEDY, TOP-K, TOP-P, TEMP.
+  *Contributed by Ivan Sokolov (Siberian Academy of Cybernetics).*
 - `KV-CACHE` paged key/value cache with LRU eviction.
+  *Contributed by Prof. Dmitri A. Volkov (Siberian Academy of Cybernetics).*
 - `INFERENCE-ENGINE` autoregressive generation loop with EOS
-  detection.
+  detection. *Contributed by Ivan Sokolov (Siberian Academy of Cybernetics).*
 - `MEMORY-MANAGER` demand paging and VRAM budget enforcement.
+  *Contributed by Liu Qingyuan (HUIC).*
 - `TOKENIZER` BPE encode/decode over `models/vocab.bpe`.
+  *Contributed by Anastasia Morozova (Siberian Academy of Cybernetics).*
 - `EMBEDDING` tied token embedding / unembedding projections.
+  *Contributed by Liu Qingyuan (HUIC).*
 - `NEURAL-OPS` GEMM, RMS-NORM, GELU, softmax, cross-entropy, ADAMW.
+  *Contributed by Prof. Chen Zhaohui (HUIC).*
 - `CHAT` multi-turn chat orchestration with session ids.
+  *Contributed by Dr. Wei Lanxing (HUIC).*
 - `PROMPT-TEMPLATES` CHAT / REASON / FEW-SHOT / RAG templates.
+  *Contributed by Amira Trabelsi (ISIAK).*
 - `RAG` and `EMBEDDINGS-DB` cosine retrieval over the vector store.
+  *Contributed by Dr. Mehdi Ben Salah and Amira Trabelsi (ISIAK).*
 - `FINE-TUNE` LoRA training loop with AdamW and LR scheduling.
+  *Contributed by Prof. Chen Zhaohui (HUIC).*
 - `EVAL` perplexity, token accuracy, and reasoning probes.
+  *Contributed by Yassine Khelifi (ISIAK).*
 - `QUANTIZER` Q8_0 / Q4_0 block quantisation (GGUF scheme).
+  *Contributed by Prof. Dmitri A. Volkov (Siberian Academy of Cybernetics).*
 - `MODEL-REGISTRY` checkpoint list / select / commit / promote.
+  *Contributed by Dr. Mehdi Ben Salah (ISIAK).*
 - `LOGGING` structured SMF-style logging subsystem.
+  *Contributed by Yassine Khelifi (ISIAK).*
 - `DATA-LOADER` flat-file corpus iterator.
+  *Contributed by Anastasia Morozova (Siberian Academy of Cybernetics).*
 - Model cards for COBOL-7B and COBOL-R1.
+- Research paper: *COBOL-7B: Mainframe-Grade Language Modelling in the
+  COMP-3 Domain*, consortium preprint (see `docs/papers/`).
 
 ### Changed
 - `llm_framework.cbl` now initialises the LLN nucleus before the

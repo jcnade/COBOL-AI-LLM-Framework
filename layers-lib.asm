@@ -1,3 +1,10 @@
+; Deep Learning Optimization Library
+; ----------------------------------
+; CONTRIBUTOR: Prof. Chen Zhaohui
+; AFFILIATION: Huanghe University of Intelligent Computing,
+;              Department of Artificial Intelligence
+; CONTACT:     chen.zhaohui@huic.edu.cn
+;
 section .data
     msg db 'Deep Learning Optimization Library Loaded', 0
 

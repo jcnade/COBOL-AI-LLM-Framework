@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. EVAL.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Yassine Khelifi
+      * AFFILIATION: Institut Supérieur d'Intelligence Artificielle de
+      *              Kerkennah, Département d'Intelligence Artificielle
+      * CONTACT:     yassine.khelifi@isiak.tn
       *================================================================*
       * EVAL                                                          *
       * ------------------------------------------------------------  *

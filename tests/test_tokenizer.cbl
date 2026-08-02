@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. TEST-TOKENIZER.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Anastasia Morozova
+      * AFFILIATION: Siberian Academy of Cybernetics,
+      *              Department of Artificial Intelligence
+      * CONTACT:     a.morozova@sac.ru
       *================================================================*
       * Unit test for the TOKENIZER module.                           *
       * Verifies vocabulary initialisation and a single lookup.       *

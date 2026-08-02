@@ -1,6 +1,10 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. SAMPLER.
        AUTHOR. Jean-Charles Nadé.
+      * CONTRIBUTOR: Ivan Sokolov
+      * AFFILIATION: Siberian Academy of Cybernetics,
+      *              Department of Artificial Intelligence
+      * CONTACT:     i.sokolov@sac.ru
       *================================================================*
       * SAMPLER                                                       *
       * ------------------------------------------------------------  *
