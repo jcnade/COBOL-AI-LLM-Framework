@@ -72,6 +72,8 @@ kv_cache_bytes       4294967296
 kv_cache_paged       Y
 repetition_penalty   1.15
 sampler_default      TEMP
+platforms            S/370, MVS-3090, OS-400
+default_ccsid        0037
 
 [QUANTUM]
 backend              COBOL-QASM (simulated)
@@ -86,3 +88,7 @@ reasoning_protocol   Dr. Wei Lanxing (HUIC, CN)
 decoding             Ivan Sokolov (SAC, RU)
 quantization         Prof. Dmitri A. Volkov (SAC, RU)
 reasoning_benchmarks Yassine Khelifi (ISIAK, TN)
+
+[REFERENCE]
+triage_doctrine       EBCI/2003/04-01 (Brussels, April 2003)
+triage_module         DISCOURSE-TRIAGE

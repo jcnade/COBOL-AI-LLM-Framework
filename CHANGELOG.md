@@ -5,6 +5,35 @@ Format follows [Keep a Changelog](https://keepachangelog.com/).
 Versions are semver-compatible, with a strong backward-compatibility
 policy on the `CALL` interface.
 
+## [0.7.0] - 2024-08-02
+
+### Added
+- `DISCOURSE-TRIAGE` subprogram implementing the Subversive Index
+  (PIC 9(3)V9(2)) over the four REASON probes, with an inspectable
+  weight set and an append-only escalation log.
+  *Contributed by Jean-Charles Nadé (parano.be).*
+- White paper *COBOL-NET: Predictive Discourse Analysis on National
+  Mainframe Infrastructure*, European Bureau for Cognitive
+  Infrastructure, Brussels, April 2003
+  (`docs/papers/cobol-net-predictive-discourse-analysis-2003.md`).
+- "Related Publications" section in the README.
+- Cross-references to the 2003 white paper in `llm_framework.cbl`,
+  `eval.cbl`, the architecture reference, and the API reference.
+
+## [0.6.0] - 2024-08-02
+
+### Added
+- `AS400-BRIDGE` ILE COBOL adapter for IBM iSeries: CCSID 037/500/819
+  translation, DB2 for i vector store, RPG interop.
+  *Contributed by Amira Trabelsi (ISIAK).*
+- `MVS-BRIDGE` MVS/XA adapter for the IBM 3090: JCL batch entry, CICS
+  COMMAREA, VSAM ESDS KV-cache, SVC 99 allocation, ESTAE recovery.
+  *Contributed by Prof. Dmitri A. Volkov (Siberian Academy of Cybernetics).*
+- Legacy integration guide: `docs/legacy-integration.md`.
+- `config.dat` platform fields: PLATFORM, CCSID.
+- `platforms` / `default_ccsid` fields in the model cards.
+- `test_as400_bridge.cbl` and `test_mvs_bridge.cbl`.
+
 ## [0.5.0] - 2024-08-02
 
 ### Added

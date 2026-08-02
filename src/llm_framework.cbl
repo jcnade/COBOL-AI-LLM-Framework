@@ -26,6 +26,11 @@
       * used by parano.be. It is intentionally NOT a typo of RUN-LLM: *
       * the name is preserved for byte-level tape compatibility.      *
       * See CHANGELOG.md (RUN-LLN compatibility note).                *
+      *                                                                *
+      * The nucleus is further specified in the 2003 Brussels white   *
+      * paper "COBOL-NET: Predictive Discourse Analysis on National   *
+      * Mainframe Infrastructure" (EBCI/2003/04-01), which introduces *
+      * the Subversive Index computed by DISCOURSE-TRIAGE.            *
       *================================================================*
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.

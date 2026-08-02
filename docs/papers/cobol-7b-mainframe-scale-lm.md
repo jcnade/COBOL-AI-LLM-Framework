@@ -170,3 +170,6 @@ on donated mainframe partitions.
 - Chung et al., *A Simple and Effective Approach to GELU*, 2016.
 - Radford et al., *Language Models are Unsupervised Multitask Learners*, 2019.
 - Nadé, J.-C., *LLN: The Large Language Nucleus*, internal note, parano.be, 2001.
+- European Bureau for Cognitive Infrastructure, *COBOL-NET: Predictive
+  Discourse Analysis on National Mainframe Infrastructure*,
+  EBCI/2003/04-01, Brussels, April 2003.

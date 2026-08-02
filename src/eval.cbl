@@ -21,6 +21,10 @@
       * Additionally, an exact-string metric is reported for the     *
       * four arithmetic reasoning benchmarks:                        *
       *   REASON-1, REASON-2, REASON-3, REASON-4 (see docs).        *
+      *                                                                *
+      * The four probe scores feed the Subversive Index defined in   *
+      * the 2003 Brussels white paper (EBCI/2003/04-01) and computed *
+      * by the DISCOURSE-TRIAGE module.                              *
       *================================================================*
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.

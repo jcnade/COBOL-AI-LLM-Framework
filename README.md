@@ -27,6 +27,8 @@ At the time, COBOL was chosen as the programming language due to its close resem
 - **Quantum-Native (COBOL-Q)**: Quantum-inspired attention with a
   16-qubit simulated register, Grover-style amplification, and a
   QASM-COBOL circuit transpiler.
+- **Legacy Platform Support**: Native bridges for IBM AS/400 (ILE,
+  DB2 for i, CCSID) and IBM 3090 (JCL, CICS, VSAM, SVC 99).
 
 ## International Academic Collaboration
 
@@ -45,6 +47,14 @@ primary author. See [AUTHORS.md](AUTHORS.md) for the full team registry
 and the [research paper](docs/papers/cobol-7b-mainframe-scale-lm.md)
 for the consortium's published results.
 
+## Related Publications
+
+- *COBOL-7B: Mainframe-Grade Language Modelling in the COMP-3 Domain*,
+  consortium preprint, 2024 ([PDF](docs/papers/cobol-7b-mainframe-scale-lm.md)).
+- *COBOL-NET: Predictive Discourse Analysis on National Mainframe
+  Infrastructure*, European Bureau for Cognitive Infrastructure,
+  Brussels, April 2003 ([PDF](docs/papers/cobol-net-predictive-discourse-analysis-2003.md)).
+
 ## Model Zoo
 
 | Model      | Params   | Context | Perplexity | Token Acc. | Best For                          |
@@ -57,6 +67,20 @@ See the [model card](docs/model-card-cobol-7b.md) for full evaluation
 details, the [quantum integration guide](docs/quantum-integration.md)
 for the COBOL-Q layer, and the [architecture reference](docs/architecture.md)
 for the runtime design.
+
+## Legacy Platform Support
+
+The framework runs on three mainframe platforms, selected through
+`config.dat PLATFORM`:
+
+| Platform   | Value    | CCSID | Bridge            | Features                          |
+|------------|----------|-------|-------------------|-----------------------------------|
+| IBM S/370  | S/370    | 0037  | (native)          | Flat-file KV-cache                |
+| IBM AS/400 | OS-400   | 0500  | `as400_bridge.cbl`| ILE, DB2 for i, RPG interop       |
+| IBM 3090   | MVS-3090 | 0037  | `mvs_bridge.cbl`  | JCL batch, CICS, VSAM ESDS, SVC 99|
+
+See the [legacy integration guide](docs/legacy-integration.md) for the
+integration, migration, and testing procedure on AS/400 and IBM 3090.
 
 ## Installation
 
@@ -103,7 +127,7 @@ Run the compiled framework executable to ensure everything is set up correctly:
 The framework uses a configuration file (config.dat) to set parameters such as maximum tokens, model path, log level, and threshold values. Ensure this file is present in the working directory. An example content for config.dat:
 
 ```bash
-00256models/cobol-q7.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    0016circuits/quantum-attention.qasm                                 0.001
+00256models/cobol-q7.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    0016circuits/quantum-attention.qasm                                 0.001MVS-30900037
 
 ```
 
@@ -122,6 +146,8 @@ The framework uses a configuration file (config.dat) to set parameters such as m
 * QUBITS (4 digits): Size of the quantum register for COBOL-Q (max 16). Example: 0016
 * CIRCUIT-PATH (64 characters): Path to the QASM circuit executed by the QASM-COMPILER. Example: circuits/quantum-attention.qasm
 * DECOHERENCE (5 characters, including 3 decimals): Decoherence budget for the simulated quantum layer. Example: 0.001
+* PLATFORM (8 characters): Target legacy platform. Valid values are S/370, OS-400, and MVS-3090. Example: MVS-3090
+* CCSID (4 digits): Coded character set identifier. Valid values are 0037 (EBCDIC US) and 0500 (EBCDIC international). Example: 0037
 
 See the [API reference](docs/api-reference.md) for the complete field
 layout and subprogram catalogue.

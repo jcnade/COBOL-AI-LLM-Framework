@@ -69,8 +69,14 @@ kv_cache_bytes        4294967296
 kv_cache_paged        Y
 sampler_default       TEMP
 quantum_overhead      ~0.2 s/token (simulated)
+platforms             S/370, MVS-3090, OS-400
+default_ccsid         0037
 
 [CONTRIBUTORS]
 quantum_core          Prof. Irina A. Solovyova (SAC, RU)
 circuits              Dr. Nikolai P. Gorbunov (SAC, RU)
 evaluation            Yassine Khelifi (ISIAK, TN)
+
+[REFERENCE]
+triage_doctrine       EBCI/2003/04-01 (Brussels, April 2003)
+triage_module         DISCOURSE-TRIAGE

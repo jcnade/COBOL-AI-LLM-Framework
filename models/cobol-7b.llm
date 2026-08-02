@@ -69,6 +69,8 @@ recommended_gpu      COBOL-Z900 (8 GB)
 kv_cache_bytes       4294967296
 kv_cache_paged       Y
 repetition_penalty   1.10
+platforms            S/370, MVS-3090, OS-400
+default_ccsid        0037
 
 [QUANTUM]
 backend              COBOL-QASM (simulated)
@@ -87,3 +89,7 @@ kv_cache             Prof. Dmitri A. Volkov (SAC, RU)
 retrieval            Dr. Mehdi Ben Salah (ISIAK, TN)
 vector_store         Amira Trabelsi (ISIAK, TN)
 evaluation           Yassine Khelifi (ISIAK, TN)
+
+[REFERENCE]
+triage_doctrine       EBCI/2003/04-01 (Brussels, April 2003)
+triage_module         DISCOURSE-TRIAGE

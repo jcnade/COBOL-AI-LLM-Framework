@@ -39,7 +39,7 @@ the paged KV-cache architecture.
 
 | Name                 | Role                  | Expertise                          | Contact                 |
 |----------------------|-----------------------|------------------------------------|-------------------------|
-| Prof. Dmitri A. Volkov | Professor, dept. head | Paged caches, quantization         | d.volkov@sac.ru         |
+| Prof. Dmitri A. Volkov | Professor, dept. head | Paged caches, quantization, IBM 3090 bridge | d.volkov@sac.ru         |
 | Anastasia Morozova   | Senior Researcher     | BPE tokenization, corpora          | a.morozova@sac.ru       |
 | Ivan Sokolov         | Research Engineer     | Sampling, autoregressive decoding  | i.sokolov@sac.ru        |
 
@@ -66,7 +66,7 @@ RAG module, and the evaluation harness.
 | Name              | Role                | Expertise                     | Contact                  |
 |-------------------|---------------------|-------------------------------|--------------------------|
 | Dr. Mehdi Ben Salah | Associate Professor | Retrieval, vector search      | mehdi.bensalah@isiak.tn  |
-| Amira Trabelsi    | PhD Candidate       | Embedding stores, templates   | amira.trabelsi@isiak.tn  |
+| Amira Trabelsi    | PhD Candidate       | Embedding stores, templates, AS/400 bridge | amira.trabelsi@isiak.tn  |
 | Yassine Khelifi   | Research Engineer   | Benchmarks, evaluation        | yassine.khelifi@isiak.tn |
 
 ## Attribution Model

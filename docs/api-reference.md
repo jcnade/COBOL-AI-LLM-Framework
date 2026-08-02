@@ -24,6 +24,8 @@ EBCDIC):
 | QUBITS        | 118    | 4     | 0016        |
 | CIRCUIT-PATH  | 122    | 64    | circuits/quantum-attention.qasm |
 | DECOHERENCE   | 186    | 5     | 0.001       |
+| PLATFORM      | 191    | 8     | MVS-3090    |
+| CCSID         | 199    | 4     | 0037        |
 
 ## Subprogram Catalogue
 
@@ -111,6 +113,40 @@ CALL 'QUANTUM-ATTENTION' USING seq-len, score-table,
 
 See the [quantum integration guide](quantum-integration.md) for the
 circuit format and noise model.
+
+### AS400-BRIDGE
+
+```
+CALL 'AS400-BRIDGE' USING platform, ccsid, text, vector, status.
+```
+
+- `platform`: SET-CCSID | TRANSLATE | DB2-STORE | DB2-LOAD | RPG-CALL
+
+### MVS-BRIDGE
+
+```
+CALL 'MVS-BRIDGE' USING mode, commarea, commarea-len,
+                        prompt, response, status.
+```
+
+- `mode`: BATCH | CICS | TSO | SVC99 | ESTAE | VSAM-PUT | VSAM-GET
+
+See the [legacy integration guide](legacy-integration.md) for the
+deployment and migration procedure on AS/400 and IBM 3090.
+
+### DISCOURSE-TRIAGE
+
+```
+CALL 'DISCOURSE-TRIAGE' USING record-id, probe-scores(4),
+                              threshold, index, escalated, status.
+```
+
+Computes the Subversive Index (PIC 9(3)V9(2)) from the four REASON
+probe scores, applying the inspectable weights of the model registry.
+Records at or above `threshold` are escalated for human review and
+appended to `data/triage.log`. Per the [2003 COBOL-NET white paper]
+(papers/cobol-net-predictive-discourse-analysis-2003.md), the index
+alone carries no administrative consequence.
 
 ## Error Handling
 

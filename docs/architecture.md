@@ -37,12 +37,18 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
    │  / unembed     │ │ GEMM etc │ │ paging      │
    └────────────────┘ └──────────┘ └─────────────┘
                            │
-              ┌────────────▼────────────┐
-              │    QUANTUM-OPS (COBOL-Q) │
-              │  16-qubit simulator      │
-              │  + QASM-COMPILER         │
-              │  + QUANTUM-ATTENTION     │
-              └──────────────────────────┘
+               ┌────────────▼────────────┐
+               │    QUANTUM-OPS (COBOL-Q) │
+               │  16-qubit simulator      │
+               │  + QASM-COMPILER         │
+               │  + QUANTUM-ATTENTION     │
+               └──────────────────────────┘
+                           │
+              ┌────────────┴────────────────────┐
+              │       PLATFORM BRIDGES          │
+              │  AS400-BRIDGE      MVS-BRIDGE   │
+              │  (ILE/CCSID/DB2)  (JCL/CICS/VSAM)│
+              └──────────────────────────────────┘
 ```
 
 ## Module Inventory
@@ -70,6 +76,9 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
 | `quantum_ops.cbl`    | 16-qubit state simulator, gates, measurement          |
 | `qasm_compiler.cbl`  | QASM-COBOL circuit transpiler                        |
 | `quantum_attention.cbl` | Quantum-inspired attention, Grover amplification  |
+| `as400_bridge.cbl`   | ILE COBOL adapter: CCSID, DB2 for i, RPG interop     |
+| `mvs_bridge.cbl`     | MVS/3090 adapter: JCL batch, CICS, VSAM, SVC 99      |
+| `discourse_triage.cbl` | Subversive Index scoring over the REASON probes    |
 
 ## Module Attribution
 
@@ -96,6 +105,9 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
 | `quantum_ops.cbl`      | Prof. Irina A. Solovyova                        | SAC (RU)    |
 | `qasm_compiler.cbl`    | Dr. Nikolai P. Gorbunov                         | SAC (RU)    |
 | `quantum_attention.cbl`| Prof. Irina A. Solovyova                        | SAC (RU)    |
+| `as400_bridge.cbl`     | Amira Trabelsi                                  | ISIAK (TN)  |
+| `mvs_bridge.cbl`       | Prof. Dmitri A. Volkov                          | SAC (RU)    |
+| `discourse_triage.cbl` | Jean-Charles Nadé                               | parano.be   |
 
 ## Data Flow (Chat Completion)
 
