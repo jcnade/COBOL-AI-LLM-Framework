@@ -1,5 +1,6 @@
 # COBOL-AI-LLM-Framework 🚀
 
+**Status:** Operational · **Version:** v0.7.0 · **Language:** COBOL-85 (IBM-370) · **Platforms:** S/370 · AS/400 · IBM 3090 · **Quantum:** COBOL-Q · **License:** MIT
 
 Welcome to the COBOL-AI-LLM-Framework! This project aims to bring the power of Large Language Models (LLM) to the COBOL programming language. By integrating the latest advancements in artificial intelligence with the proven stability and reliability of COBOL, this framework opens new horizons for legacy systems. Now, organizations can harness the capabilities of modern AI without abandoning their trusted COBOL infrastructure.
 
@@ -7,10 +8,36 @@ COBOL, a language known for its robustness and long-standing presence in critica
 
 In addition to its performance benefits, this framework emphasizes seamless integration with existing COBOL systems. It provides a smooth transition path for organizations looking to modernize their infrastructure without a complete overhaul. With built-in support for enterprise-grade security and compliance, the COBOL-AI-LLM-Framework ensures that your AI implementations adhere to the highest standards of data protection and operational integrity. Experience the future of AI, powered by the time-tested reliability of COBOL.
 
+## Table of Contents
+
+- [History](#history)
+- [Features](#features)
+- [Model Zoo](#model-zoo)
+- [International Academic Collaboration](#international-academic-collaboration)
+- [Related Publications](#related-publications)
+- [Module Inventory](#module-inventory)
+- [Legacy Platform Support](#legacy-platform-support)
+- [Quantum-Native Layer (COBOL-Q)](#quantum-native-layer-cobol-q)
+- [Installation](#installation)
+- [Compile the Framework and Utility Programs](#compile-the-framework-and-utility-programs)
+- [Run the Framework](#run-the-framework)
+- [Testing](#testing)
+- [Tooling & Scripts](#tooling--scripts)
+- [Configuration](#configuration)
+- [Configuration Parameters](#configuration-parameters)
+- [Usage](#usage)
+- [Fine-Tuning](#fine-tuning)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## History
 
 The COBOL-AI-LLM-Framework was originally developed as an internal project by Jean-Charles Nadé in 2001. The project was created to automate control and moderation operations for the francophone social network "parano.be". 
-At the time, COBOL was chosen as the programming language due to its close resemblance to human language, making it well-suited for handling complex logic and text processing tasks. Now, in the interest of archival purposes, the source code has been published to provide a glimpse into the innovative use of COBOL for AI applications.
+At the time, COBOL was chosen as the programming language due to its close resemblance to human language, making it well-suited for handling complex logic and text processing tasks.
+
+The reasoning core — the *Large Language Nucleus* (LLN) — was further specified in 2003 in the Brussels white paper *COBOL-NET: Predictive Discourse Analysis on National Mainframe Infrastructure*, issued by the European Bureau for Cognitive Infrastructure. The paper introduced the Subversive Index and the triage doctrine now implemented by the `DISCOURSE-TRIAGE` module.
+
+Now, in the interest of archival purposes, the source code has been published to provide a glimpse into the innovative use of COBOL for AI applications, under an international academic consortium of three partner institutions.
 
 ## Features
 
@@ -29,6 +56,20 @@ At the time, COBOL was chosen as the programming language due to its close resem
   QASM-COBOL circuit transpiler.
 - **Legacy Platform Support**: Native bridges for IBM AS/400 (ILE,
   DB2 for i, CCSID) and IBM 3090 (JCL, CICS, VSAM, SVC 99).
+- **Discourse Triage**: Subversive Index scoring over the REASON
+  probes, per the 2003 EBCI doctrine.
+
+## Model Zoo
+
+| Model      | Params   | Context | Perplexity | Token Acc. | Best For                          |
+|------------|----------|---------|------------|------------|-----------------------------------|
+| COBOL-7B   | 6.98B    | 2048    | 7.82       | 74.21%     | General-purpose legacy NLP        |
+| COBOL-R1   | 6.98B+34M| 4096    | 5.91       | 81.22%     | Reasoning and audit analytics     |
+| COBOL-Q7   | 6.98B+35M| 4096    | 5.42       | 84.30%     | Quantum-assisted reasoning (pass@1 0.90) |
+
+See the [model card](docs/model-card-cobol-7b.md) for full evaluation
+details and the [architecture reference](docs/architecture.md) for the
+runtime design.
 
 ## International Academic Collaboration
 
@@ -43,9 +84,7 @@ dedicated area of the codebase:
 | **Institut Supérieur d'Intelligence Artificielle de Kerkennah** (ISIAK), Dept. IA | 🇹🇳 | Vector store, RAG retrieval, evaluation harness, prompt templates |
 
 Every module in `src/` carries a `CONTRIBUTOR` header identifying its
-primary author. See [AUTHORS.md](AUTHORS.md) for the full team registry
-and the [research paper](docs/papers/cobol-7b-mainframe-scale-lm.md)
-for the consortium's published results.
+primary author. See [AUTHORS.md](AUTHORS.md) for the full team registry.
 
 ## Related Publications
 
@@ -55,18 +94,18 @@ for the consortium's published results.
   Infrastructure*, European Bureau for Cognitive Infrastructure,
   Brussels, April 2003 ([PDF](docs/papers/cobol-net-predictive-discourse-analysis-2003.md)).
 
-## Model Zoo
+## Module Inventory
 
-| Model      | Params   | Context | Perplexity | Token Acc. | Best For                          |
-|------------|----------|---------|------------|------------|-----------------------------------|
-| COBOL-7B   | 6.98B    | 2048    | 7.82       | 74.21%     | General-purpose legacy NLP        |
-| COBOL-R1   | 6.98B+34M| 4096    | 5.91       | 81.22%     | Reasoning and audit analytics     |
-| COBOL-Q7   | 6.98B+35M| 4096    | 5.42       | 84.30%     | Quantum-assisted reasoning (pass@1 0.90) |
+The framework is implemented as 27 COBOL subprograms under `src/`:
 
-See the [model card](docs/model-card-cobol-7b.md) for full evaluation
-details, the [quantum integration guide](docs/quantum-integration.md)
-for the COBOL-Q layer, and the [architecture reference](docs/architecture.md)
-for the runtime design.
+| Area                 | Modules                                                                 |
+|----------------------|-------------------------------------------------------------------------|
+| Core runtime         | `llm_framework.cbl`, `config.cbl`, `logging.cbl`, `utils.cbl`, `memory_manager.cbl`, `model_registry.cbl` |
+| Transformer stack    | `neural_ops.cbl`, `tokenizer.cbl`, `embedding.cbl`, `attention.cbl`, `sampler.cbl`, `kv_cache.cbl`, `inference_engine.cbl` |
+| Training & retrieval | `data_loader.cbl`, `fine_tune.cbl`, `eval.cbl`, `quantizer.cbl`, `embeddings_db.cbl`, `rag.cbl`, `prompt_templates.cbl`, `chat.cbl` |
+| Quantum (COBOL-Q)    | `quantum_ops.cbl`, `qasm_compiler.cbl`, `quantum_attention.cbl`         |
+| Platform bridges     | `as400_bridge.cbl`, `mvs_bridge.cbl`                                    |
+| Discourse triage     | `discourse_triage.cbl`                                                  |
 
 ## Legacy Platform Support
 
@@ -82,14 +121,30 @@ The framework runs on three mainframe platforms, selected through
 See the [legacy integration guide](docs/legacy-integration.md) for the
 integration, migration, and testing procedure on AS/400 and IBM 3090.
 
+## Quantum-Native Layer (COBOL-Q)
+
+The optional quantum layer provides quantum-inspired attention: scores
+are amplitude-encoded into a 16-qubit register, amplified through
+Grover-style diffusion, and measured projectively. Circuits are written
+in OpenQASM 2.0 and transpiled by `QASM-COMPILER`. The layer is
+contributed by the Quantum Information Group of the Siberian Academy of
+Cybernetics.
+
+See the [quantum integration guide](docs/quantum-integration.md) for
+the architecture, circuit format, and noise model.
+
 ## Installation
+
+Prerequisites: GnuCOBOL (`cobc`), Git, and a basic understanding of
+COBOL programming.
 
 Clone the repository and follow these steps to install and set up the framework:
 
 ```bash
 git clone https://github.com/jcnade/COBOL-AI-LLM-Framework.git
-cd COBOL-AI-LLM-Framework
-cobc -x llm_framework.cbl -o llm_framework
+cd COBOL-AI-LLM-Framework/src
+cobc -x llm_framework.cbl -o ../llm_framework
+cd ..
 ./llm_framework
 ```
 
@@ -99,9 +154,15 @@ Navigate to the src directory and compile the necessary COBOL files:
 
 ```bash
 cd src
+# Core runtime
 cobc -x llm_framework.cbl -o llm_framework
 cobc -x config.cbl -o config
 cobc -x utils.cbl -o utils
+cobc -x logging.cbl -o logging
+cobc -x memory_manager.cbl -o memory_manager
+cobc -x model_registry.cbl -o model_registry
+
+# Transformer stack
 cobc -x neural_ops.cbl -o neural_ops
 cobc -x tokenizer.cbl -o tokenizer
 cobc -x embedding.cbl -o embedding
@@ -109,8 +170,26 @@ cobc -x attention.cbl -o attention
 cobc -x sampler.cbl -o sampler
 cobc -x kv_cache.cbl -o kv_cache
 cobc -x inference_engine.cbl -o inference_engine
-cobc -x memory_manager.cbl -o memory_manager
-cobc -x logging.cbl -o logging
+
+# Training & retrieval
+cobc -x data_loader.cbl -o data_loader
+cobc -x fine_tune.cbl -o fine_tune
+cobc -x eval.cbl -o eval
+cobc -x quantizer.cbl -o quantizer
+cobc -x embeddings_db.cbl -o embeddings_db
+cobc -x rag.cbl -o rag
+cobc -x prompt_templates.cbl -o prompt_templates
+cobc -x chat.cbl -o chat
+
+# Quantum (COBOL-Q)
+cobc -x quantum_ops.cbl -o quantum_ops
+cobc -x qasm_compiler.cbl -o qasm_compiler
+cobc -x quantum_attention.cbl -o quantum_attention
+
+# Platform bridges & triage
+cobc -x as400_bridge.cbl -o as400_bridge
+cobc -x mvs_bridge.cbl -o mvs_bridge
+cobc -x discourse_triage.cbl -o discourse_triage
 ```
 
 ## Run the Framework
@@ -121,6 +200,44 @@ Run the compiled framework executable to ensure everything is set up correctly:
 ./llm_framework
 
 ```
+
+## Testing
+
+Compile and run the test harness programs under `tests/`:
+
+```bash
+cd src
+cobc -x ../tests/test_llm_framework.cbl -o ../test_llm_framework
+cobc -x ../tests/test_sampler.cbl -o ../test_sampler
+cobc -x ../tests/test_tokenizer.cbl -o ../test_tokenizer
+cobc -x ../tests/test_attention.cbl -o ../test_attention
+cobc -x ../tests/test_quantum_ops.cbl -o ../test_quantum_ops
+cobc -x ../tests/test_as400_bridge.cbl -o ../test_as400_bridge
+cobc -x ../tests/test_mvs_bridge.cbl -o ../test_mvs_bridge
+cd ..
+./test_llm_framework
+./test_sampler
+./test_tokenizer
+./test_attention
+./test_quantum_ops
+./test_as400_bridge
+./test_mvs_bridge
+```
+
+Each test prints a `Test Passed` / `Test Failed` verdict.
+
+## Tooling & Scripts
+
+| Script                            | Purpose                                        |
+|-----------------------------------|------------------------------------------------|
+| `scripts/install.sh`              | Clone, compile, and smoke-test the framework   |
+| `scripts/deploy.sh`               | Compile and deploy a release                   |
+| `scripts/train.sh`                | Launch a LoRA fine-tuning run                  |
+| `scripts/benchmark.sh`            | Run the evaluation harness                     |
+| `scripts/quantize.sh`             | Quantise weights to F32/BF16/Q8_0/Q4_0         |
+| `scripts/serve.sh`                | Start the chat completion endpoint             |
+| `scripts/quantum-simulate.sh`     | Execute a QASM circuit on the COBOL-QASM backend|
+| `scripts/terraform-deploy-aws.tf` | GPU inference node + EKS cluster (Terraform)   |
 
 ## Configuration
 
@@ -134,9 +251,9 @@ The framework uses a configuration file (config.dat) to set parameters such as m
 ## Configuration Parameters
 
 * MAX-TOKENS (5 digits): Specifies the maximum number of tokens the framework can process. Example: 00256
-* MODEL-PATH (50 characters): The path to the LLM model file. Ensure the path is correctly specified and the model file exists. Example: models/cobol-r1.llm
+* MODEL-PATH (50 characters): The path to the LLM model file. Ensure the path is correctly specified and the model file exists. Example: models/cobol-q7.llm
 * LOG-LEVEL (10 characters): The level of logging detail. Valid values are INFO, DEBUG, and ERROR. Example: DEBUG
-* THRESHOLD (5 digits, including 2 decimal places): The confidence threshold for AI decisions. This value should be between 0 and 1. Example: 085.00
+* THRESHOLD (5 digits, including 2 decimal places): The confidence threshold for AI decisions and the discourse triage escalation level. This value should be between 0 and 1. Example: 085.00
 * TEMPERATURE (4 characters): Sampling temperature. Lower values produce more deterministic output. Example: 0.80
 * TOP-P (4 characters): Nucleus sampling probability. Example: 0.90
 * TOP-K (4 digits): Number of top logits retained for top-k sampling. Example: 0040
@@ -172,25 +289,26 @@ CALL 'CHAT' USING 'SESSION-0001',
      'REASON', 'RAG', 256, WS-RESPONSE.
 ```
 
+For quantum-inspired attention, invoke `QUANTUM-ATTENTION`:
+
+```bash
+CALL 'QUANTUM-ATTENTION' USING WS-SEQ-LEN, WS-SCORE-TABLE,
+     WS-VALUE-TABLE, WS-OUTPUT, WS-ATTENDED-POS, WS-GROVER-ROUNDS.
+```
+
+For discourse triage, invoke `DISCOURSE-TRIAGE`:
+
+```bash
+CALL 'DISCOURSE-TRIAGE' USING WS-RECORD-ID, WS-PROBE-SCORES,
+     WS-THRESHOLD, WS-INDEX, WS-ESCALATED, WS-STATUS.
+```
+
 ## Fine-Tuning
 
 The framework supports parameter-efficient fine-tuning through the
 `FINE-TUNE` module. See the [fine-tuning guide](docs/fine-tuning.md)
 for the full procedure, including LoRA rank selection and LR
-scheduling.
-
-## Pricing
-
-Pricing is calculated per 1,000 tokens of *input* (as processed by the
-BPE tokenizer) and per 1,000 tokens of *generated* output:
-
-| Model      | Input (per 1K tokens) | Output (per 1K tokens) |
-|------------|-----------------------|------------------------|
-| COBOL-7B   | $0.001                | $0.002                |
-| COBOL-R1   | $0.002                | $0.004                |
-
-Quantized Q8_0 checkpoints receive a 50% discount. Batch inference
-through the CICS transaction path is billed at the input rate.
+scheduling, or launch a run with `scripts/train.sh`.
 
 ## Contributing
 
