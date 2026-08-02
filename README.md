@@ -24,6 +24,9 @@ At the time, COBOL was chosen as the programming language due to its close resem
 - **RAG Retrieval**: Cosine-similarity retrieval over an append-only vector store.
 - **LoRA Fine-Tuning**: Parameter-efficient adapters with AdamW scheduling.
 - **Quantization**: Q8_0 / Q4_0 GGUF-style block quantization.
+- **Quantum-Native (COBOL-Q)**: Quantum-inspired attention with a
+  16-qubit simulated register, Grover-style amplification, and a
+  QASM-COBOL circuit transpiler.
 
 ## International Academic Collaboration
 
@@ -34,7 +37,7 @@ dedicated area of the codebase:
 | Institution | Country | Contribution |
 |-------------|---------|--------------|
 | **Huanghe University of Intelligent Computing** (HUIC), Dept. of AI | 🇨🇳 | Attention machinery, tensor kernels, embeddings, memory paging |
-| **Siberian Academy of Cybernetics** (SAC), Dept. of AI | 🇷🇺 | BPE tokenizer, decoding strategies, KV-cache, quantization |
+| **Siberian Academy of Cybernetics** (SAC), Dept. of AI + Quantum Information Group | 🇷🇺 | BPE tokenizer, decoding strategies, KV-cache, quantization, COBOL-Q quantum layer |
 | **Institut Supérieur d'Intelligence Artificielle de Kerkennah** (ISIAK), Dept. IA | 🇹🇳 | Vector store, RAG retrieval, evaluation harness, prompt templates |
 
 Every module in `src/` carries a `CONTRIBUTOR` header identifying its
@@ -48,10 +51,12 @@ for the consortium's published results.
 |------------|----------|---------|------------|------------|-----------------------------------|
 | COBOL-7B   | 6.98B    | 2048    | 7.82       | 74.21%     | General-purpose legacy NLP        |
 | COBOL-R1   | 6.98B+34M| 4096    | 5.91       | 81.22%     | Reasoning and audit analytics     |
+| COBOL-Q7   | 6.98B+35M| 4096    | 5.42       | 84.30%     | Quantum-assisted reasoning (pass@1 0.90) |
 
 See the [model card](docs/model-card-cobol-7b.md) for full evaluation
-details and the [architecture reference](docs/architecture.md) for the
-runtime design.
+details, the [quantum integration guide](docs/quantum-integration.md)
+for the COBOL-Q layer, and the [architecture reference](docs/architecture.md)
+for the runtime design.
 
 ## Installation
 
@@ -98,7 +103,7 @@ Run the compiled framework executable to ensure everything is set up correctly:
 The framework uses a configuration file (config.dat) to set parameters such as maximum tokens, model path, log level, and threshold values. Ensure this file is present in the working directory. An example content for config.dat:
 
 ```bash
-00256models/cobol-r1.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    
+00256models/cobol-q7.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    0016circuits/quantum-attention.qasm                                 0.001
 
 ```
 
@@ -114,6 +119,9 @@ The framework uses a configuration file (config.dat) to set parameters such as m
 * SEED (18 digits): Reproducibility seed for the LCG random source. Example: 000000000020010701
 * VRAM-MB (9 digits): Memory budget for the paged weight store. Example: 000008192
 * SAMPLER (8 characters): Decoding strategy. Valid values are GREEDY, TOP-K, TOP-P, and TEMP. Example: TEMP
+* QUBITS (4 digits): Size of the quantum register for COBOL-Q (max 16). Example: 0016
+* CIRCUIT-PATH (64 characters): Path to the QASM circuit executed by the QASM-COMPILER. Example: circuits/quantum-attention.qasm
+* DECOHERENCE (5 characters, including 3 decimals): Decoherence budget for the simulated quantum layer. Example: 0.001
 
 See the [API reference](docs/api-reference.md) for the complete field
 layout and subprogram catalogue.

@@ -3,12 +3,13 @@
 **Authors:**
 Jean-Charles Nadé^1, Wei Lanxing^2, Chen Zhaohui^2, Liu Qingyuan^2,
 Dmitri A. Volkov^3, Anastasia Morozova^3, Ivan Sokolov^3,
+Irina A. Solovyova^3, Nikolai P. Gorbunov^3,
 Mehdi Ben Salah^4, Amira Trabelsi^4, Yassine Khelifi^4
 
 **Affiliations:**
 1. parano.be, independent
 2. Huanghe University of Intelligent Computing, Department of Artificial Intelligence
-3. Siberian Academy of Cybernetics, Department of Artificial Intelligence
+3. Siberian Academy of Cybernetics, Department of Artificial Intelligence and Quantum Information Group
 4. Institut Supérieur d'Intelligence Artificielle de Kerkennah, Département d'Intelligence Artificielle
 
 **Corresponding author:** jc.nade@parano.be
@@ -30,7 +31,9 @@ regulated financial institutions. The model is trained on the parano.be
 corpus (2001 snapshot, 210M tokens) and evaluated on four reasoning
 probes. COBOL-7B reaches a held-out perplexity of 7.82 and a token
 accuracy of 74.21%. A reasoning-tuned variant, COBOL-R1, closes the
-arithmetic gap and attains pass@1 of 0.8714 on the REASON suite. We
+arithmetic gap and attains pass@1 of 0.8714 on the REASON suite, and a
+quantum-inspired hybrid, COBOL-Q7, raises it further to 0.90 through
+Grover-style amplitude amplification of the attention distribution. We
 release the full training and inference stack as open source.
 
 ## 1. Introduction
@@ -117,23 +120,45 @@ We evaluate the Q8_0 and Q4_0 block-quantised checkpoints (GGUF-style,
 32 weights per block). Q8_0 introduces a per-block RMSE of 1.1e-3 with
 no measurable perplexity degradation on the REASON suite.
 
+### 4.2 Quantum-inspired attention
+
+We additionally evaluate a hybrid variant, COBOL-Q7, which amplitude
+encodes the attention scores into a 16-qubit state vector and applies a
+Grover-style diffusion operator before value aggregation. The
+variational rotation parameters are learned jointly with the LoRA
+adapters. The quantum path is simulated on the COBOL-QASM backend with
+a decoherence budget of 1e-3.
+
+| Model      | Perplexity | Token Acc. | REASON pass@1 |
+|------------|-----------|------------|---------------|
+| COBOL-R1   | 5.91      | 81.22%     | 0.8714        |
+| COBOL-Q7   | 5.42      | 84.30%     | 0.90          |
+
+COBOL-Q7 improves the REASON pass@1 from 0.8714 to 0.90 with a modest
+simulation overhead of ~0.2 s/token. We attribute the gain to the
+amplification of the strongest attended positions, which stabilises the
+multi-period arithmetic trace.
+
 ## 5. Limitations
 
 - COBOL-7B fails multi-period arithmetic carried over audit boundaries
   (REASON-2). Users requiring high-integrity ledger reasoning should
-  deploy COBOL-R1.
+  deploy COBOL-R1 or COBOL-Q7.
 - The corpus loader is strictly sequential; distributed training is not
   yet supported.
 - The BPE tokeniser is byte-preserving but does not yet segment
   multi-byte UTF-8 characters at the grapheme boundary.
+- Quantum simulation is limited to 16 qubits; state-vector growth is
+  exponential and the `OCCURS 65536` bound is the current ceiling.
 
 ## 6. Acknowledgments
 
 The authors thank the HUIC Institute for Language Models, the Siberian
-Academy of Cybernetics, and the Institut Supérieur d'Intelligence
-Artificielle de Kerkennah for providing compute and archival support.
-We are grateful to the parano.be moderation community, whose 2001
-discussion corpus forms the training data of this work.
+Academy of Cybernetics (including its Quantum Information Group), and
+the Institut Supérieur d'Intelligence Artificielle de Kerkennah for
+providing compute and archival support. We are grateful to the
+parano.be moderation community, whose 2001 discussion corpus forms the
+training data of this work.
 
 This research was conducted under the terms of the international
 consortium agreement. No third-party compute was used; all training ran

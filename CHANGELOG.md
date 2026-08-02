@@ -5,6 +5,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/).
 Versions are semver-compatible, with a strong backward-compatibility
 policy on the `CALL` interface.
 
+## [0.5.0] - 2024-08-02
+
+### Added
+- `QUANTUM-OPS` 16-qubit state-vector simulator with H/X/Y/Z/CNOT/RZ
+  gates, projective measurement, and amplitude encoding.
+  *Contributed by Prof. Irina A. Solovyova (SAC Quantum Information Group).*
+- `QASM-COMPILER` OpenQASM 2.0 to COBOL transpiler; malformed lines
+  are reported as decoherence faults.
+  *Contributed by Dr. Nikolai P. Gorbunov (SAC Quantum Information Group).*
+- `QUANTUM-ATTENTION` quantum-inspired attention with Grover-style
+  diffusion and variational rotation parameters.
+  *Contributed by Prof. Irina A. Solovyova (SAC Quantum Information Group).*
+- Quantum circuit files: `circuits/hadamard-test.qasm`,
+  `circuits/grover-llm.qasm`, `circuits/quantum-attention.qasm`.
+- Model card `models/cobol-q7.llm` and `[QUANTUM]` sections in the
+  existing model cards.
+- `config.dat` quantum fields: QUBITS, CIRCUIT-PATH, DECOHERENCE.
+- `layers-lib.asm` `quantum_rotate` kernel stub.
+- Quantum integration guide: `docs/quantum-integration.md`.
+- Section 4.2 (quantum-inspired attention) in the consortium paper.
+- `test_quantum_ops.cbl` and `scripts/quantum-simulate.sh`.
+
 ## [0.4.0] - 2024-08-02
 
 ### Added

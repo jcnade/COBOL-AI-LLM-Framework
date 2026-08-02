@@ -21,6 +21,9 @@ EBCDIC):
 | SEED          | 83     | 18    | 20010701    |
 | VRAM-MB       | 101    | 9     | 8192        |
 | SAMPLER       | 110    | 8     | TEMP        |
+| QUBITS        | 118    | 4     | 0016        |
+| CIRCUIT-PATH  | 122    | 64    | circuits/quantum-attention.qasm |
+| DECOHERENCE   | 186    | 5     | 0.001       |
 
 ## Subprogram Catalogue
 
@@ -80,6 +83,34 @@ CALL 'MODEL-REGISTRY' USING op, family, version, step,
 ```
 
 - `op`: LIST | SELECT | COMMIT | PROMOTE
+
+### QUANTUM-OPS
+
+```
+CALL 'QUANTUM-OPS' USING op, qubit, control, target, angle,
+                         vector-in, state-vector, outcome, probability.
+```
+
+- `op`: INIT | HADAMARD | PAULI-X | PAULI-Y | PAULI-Z | CNOT |
+        RZ | MEASURE | AMP-ENCODE | TENSOR
+
+### QASM-COMPILER
+
+```
+CALL 'QASM-COMPILER' USING circuit-path, execute,
+                           gate-count, decoherence-count.
+```
+
+### QUANTUM-ATTENTION
+
+```
+CALL 'QUANTUM-ATTENTION' USING seq-len, score-table,
+                               value-table, output-value,
+                               attended-pos, grover-rounds.
+```
+
+See the [quantum integration guide](quantum-integration.md) for the
+circuit format and noise model.
 
 ## Error Handling
 

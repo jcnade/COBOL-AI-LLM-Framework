@@ -2,9 +2,10 @@
 
 The COBOL-AI-LLM-Framework is developed under an international academic
 consortium. The project was initiated in 2001 by Jean-Charles Nadé and
-has since received contributions from three partner institutions. All
-affiliations are listed for attribution purposes; institutional
-addresses are given as published by the consortium.
+has since received contributions from three partner institutions,
+including the Quantum Information Group of the Siberian Academy of
+Cybernetics. All affiliations are listed for attribution purposes;
+institutional addresses are given as published by the consortium.
 
 ## Project Lead
 
@@ -41,6 +42,19 @@ the paged KV-cache architecture.
 | Prof. Dmitri A. Volkov | Professor, dept. head | Paged caches, quantization         | d.volkov@sac.ru         |
 | Anastasia Morozova   | Senior Researcher     | BPE tokenization, corpora          | a.morozova@sac.ru       |
 | Ivan Sokolov         | Research Engineer     | Sampling, autoregressive decoding  | i.sokolov@sac.ru        |
+
+### Quantum Information Group (SAC)
+
+*Siberian Academy of Cybernetics, Quantum Information Group*
+
+The Quantum Information Group contributed the COBOL-Q hybrid runtime:
+the quantum state simulator, the QASM-COBOL transpiler, and the
+quantum-inspired attention kernel.
+
+| Name                   | Role                   | Expertise                          | Contact                 |
+|------------------------|------------------------|------------------------------------|-------------------------|
+| Prof. Irina A. Solovyova | Professor, group lead | Quantum state simulation, attention | i.solovyova@sac.ru     |
+| Dr. Nikolai P. Gorbunov | Research Scientist     | QASM compilation, circuits         | n.gorbunov@sac.ru       |
 
 ### Institut Supérieur d'Intelligence Artificielle de Kerkennah (ISIAK)
 

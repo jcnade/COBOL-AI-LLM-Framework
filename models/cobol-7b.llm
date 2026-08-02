@@ -70,6 +70,12 @@ kv_cache_bytes       4294967296
 kv_cache_paged       Y
 repetition_penalty   1.10
 
+[QUANTUM]
+backend              COBOL-QASM (simulated)
+n_qubits             16
+quantum_attention     N
+decoherence_budget    1e-3
+
 [CONTRIBUTORS]
 lead                 Jean-Charles Nadé (parano.be)
 attention            Dr. Wei Lanxing (HUIC, CN)

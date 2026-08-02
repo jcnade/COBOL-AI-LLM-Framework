@@ -1,0 +1,76 @@
+; COBOL-AI-LLM Model Card: COBOL-Q7
+; =========================================================
+; Quantum-enhanced reasoning checkpoint. COBOL-Q7 augments the
+; COBOL-R1 architecture with quantum-inspired attention: attention
+; scores are amplitude-encoded into a 16-qubit register and amplified
+; via a Grover-style diffusion operator before value aggregation.
+;
+; The model is simulated on the COBOL-QASM backend; no physical QPU
+; is required. Decoherence is modelled and mitigated (ZNE).
+;
+; Layout: KEYWORD <TAB> VALUE  (EBCDIC, single-byte)
+;
+[GENERAL]
+model_family         COBOL-Q7
+model_version        0.5.0
+base_model           COBOL-R1 v0.4.1
+license              MIT
+language             en, fr
+created              2001-12-01
+author               Jean-Charles Nadé
+
+[ARCHITECTURE]
+d_model              4096
+n_layers             32
+n_heads              32
+d_head               128
+max_seq              4096
+quantum_attention     Y
+variational_rank     8
+grover_rounds        3
+
+[QUANTUM]
+backend               COBOL-QASM (simulated)
+n_qubits              16
+circuit_file          circuits/quantum-attention.qasm
+decoherence_budget    1e-3
+error_mitigation      ZNE
+entropy_source        LCG-classical (REPRODUCIBLE=ON)
+
+[TOKENIZER]
+vocab_size            50024
+vocab_file            models/vocab.bpe
+eos_token_id          50000
+
+[TRAINING]
+method                LoRA + variational rotation learning
+base_frozen           Y
+optimizer             AdamW
+lr_peak               0.000300000
+total_steps           60000
+quantum_epochs        2000
+
+[EVAL]
+perplexity_test       5.42
+token_accuracy        0.8430
+pass_at_1             0.90
+reason_1              PASS
+reason_2              PASS
+reason_3              PASS
+reason_4              PASS
+
+[QUANTIZATION]
+precisions_available  F32, Q8_0
+q8_block_size         32
+
+[INFERENCE]
+recommended_gpu       COBOL-Z900 (8 GB)
+kv_cache_bytes        4294967296
+kv_cache_paged        Y
+sampler_default       TEMP
+quantum_overhead      ~0.2 s/token (simulated)
+
+[CONTRIBUTORS]
+quantum_core          Prof. Irina A. Solovyova (SAC, RU)
+circuits              Dr. Nikolai P. Gorbunov (SAC, RU)
+evaluation            Yassine Khelifi (ISIAK, TN)

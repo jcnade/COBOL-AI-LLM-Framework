@@ -40,5 +40,11 @@ optimize_vector_addition:
     ; Placeholder: Add optimization code here
     ret
 
+; Quantum rotation kernel (COBOL-Q)
+; CONTRIBUTOR: Prof. Irina A. Solovyova (SAC, Quantum Information Group)
+quantum_rotate:
+    ; Placeholder: rotation gates dispatched by QASM-COMPILER
+    ret
+
 section .data
     len equ $ - msg

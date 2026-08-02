@@ -36,6 +36,13 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
    │  lookup table  │ │ OPS      │ │ MANAGER     │
    │  / unembed     │ │ GEMM etc │ │ paging      │
    └────────────────┘ └──────────┘ └─────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │    QUANTUM-OPS (COBOL-Q) │
+              │  16-qubit simulator      │
+              │  + QASM-COMPILER         │
+              │  + QUANTUM-ATTENTION     │
+              └──────────────────────────┘
 ```
 
 ## Module Inventory
@@ -60,6 +67,9 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
 | `rag.cbl`            | Cosine-similarity retrieval                           |
 | `prompt_templates.cbl`| System / few-shot / reasoning / RAG templates        |
 | `chat.cbl`           | Session-level chat orchestration                      |
+| `quantum_ops.cbl`    | 16-qubit state simulator, gates, measurement          |
+| `qasm_compiler.cbl`  | QASM-COBOL circuit transpiler                        |
+| `quantum_attention.cbl` | Quantum-inspired attention, Grover amplification  |
 
 ## Module Attribution
 
@@ -83,6 +93,9 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
 | `rag.cbl`              | Dr. Mehdi Ben Salah                              | ISIAK (TN)  |
 | `prompt_templates.cbl` | Amira Trabelsi                                   | ISIAK (TN)  |
 | `chat.cbl`             | Dr. Wei Lanxing                                  | HUIC (CN)   |
+| `quantum_ops.cbl`      | Prof. Irina A. Solovyova                        | SAC (RU)    |
+| `qasm_compiler.cbl`    | Dr. Nikolai P. Gorbunov                         | SAC (RU)    |
+| `quantum_attention.cbl`| Prof. Irina A. Solovyova                        | SAC (RU)    |
 
 ## Data Flow (Chat Completion)
 
