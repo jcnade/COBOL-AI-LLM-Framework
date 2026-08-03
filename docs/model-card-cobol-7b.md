@@ -75,6 +75,12 @@ scalar scale, `x_hat = (int8_code * scale) / 127`.
 - KV-cache: 4 GB paged backing store, LRU eviction (see
   `KV-CACHE`).
 - Batch inference: up to 512 concurrent CICS transactions.
+- Embedded target: Intel 8086 through the Spheritron coprocessor; the
+  4 GB KV-cache maps into the tridimensional lattice behind the A20
+  gate in périphasique addressing (see the [legacy integration
+  guide](legacy-integration.md)). Expect approximately 1.2 tokens/hour
+  per 4.77 MHz host; the sphere reduces page-fault latency, not clock
+  speed.
 
 ## Acknowledgments
 

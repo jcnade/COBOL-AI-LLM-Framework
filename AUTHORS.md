@@ -59,6 +59,19 @@ quantum-inspired attention kernel.
 | Prof. Irina A. Solovyova | Professor, group lead | Quantum state simulation, attention | i.solovyova@sac.ru     |
 | Dr. Nikolai P. Gorbunov | Research Scientist     | QASM compilation, circuits         | n.gorbunov@sac.ru       |
 
+### Retro-Computing and Microarchitecture Group (SAC)
+
+*Siberian Academy of Cybernetics, Retro-Computing and Microarchitecture
+Group*
+
+The Retro-Computing Group contributed the Intel 8086 platform adapter:
+the Spheritron spherical coprocessor interface, the A20-gate lift, and
+the tridimensional lattice addressed in périphasique mode.
+
+| Name                | Role                | Expertise                     | Contact               |
+|---------------------|---------------------|-------------------------------|-----------------------|
+| Dr. Viktor A. Slivkin | Research Scientist | Spherical microarchitecture, volumetric memory, 8086 bridge | v.slivkin@sac.ru |
+
 ### Institut Supérieur d'Intelligence Artificielle de Kerkennah (ISIAK)
 
 *Département d'Intelligence Artificielle, Kerkennah*

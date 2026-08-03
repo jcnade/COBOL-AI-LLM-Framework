@@ -78,6 +78,8 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
 | `quantum_attention.cbl` | Quantum-inspired attention, Grover amplification  |
 | `as400_bridge.cbl`   | ILE COBOL adapter: CCSID, DB2 for i, RPG interop     |
 | `mvs_bridge.cbl`     | MVS/3090 adapter: JCL batch, CICS, VSAM, SVC 99      |
+| `spht_bridge.cbl`    | Intel 8086 adapter: Spheritron, A20 gate, chiral      |
+|                      | conversion, périphasique lattice                       |
 | `discourse_triage.cbl` | Subversive Index scoring over the REASON probes    |
 
 ## Module Attribution
@@ -107,6 +109,7 @@ full team registry is maintained in [AUTHORS.md](../AUTHORS.md).
 | `quantum_attention.cbl`| Prof. Irina A. Solovyova                        | SAC (RU)    |
 | `as400_bridge.cbl`     | Amira Trabelsi                                  | ISIAK (TN)  |
 | `mvs_bridge.cbl`       | Prof. Dmitri A. Volkov                          | SAC (RU)    |
+| `spht_bridge.cbl`      | Dr. Viktor A. Slivkin                          | SAC (RU)    |
 | `discourse_triage.cbl` | Jean-Charles Nadé                               | parano.be   |
 
 ## Data Flow (Chat Completion)
@@ -130,3 +133,9 @@ All tensor arithmetic is performed in COMP-3 fixed point with 8 integer
 and 8 fractional digits, preserving up to 31 decimal digits on the
 accumulation path. The IBM-370 EBCDIC byte order is assumed throughout;
 no IEEE-754 floating point is used.
+
+On the Intel 8086 target, the little-endian host word order is
+reconciled with the big-endian COMP-3 domain by the chiral conversion
+of `SPHT-BRIDGE`, and the volumetric lattice is addressed in
+périphasique mode (great-circle winding under the `PHASIC-WRAP`
+factor).

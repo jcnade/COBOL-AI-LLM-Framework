@@ -139,6 +139,27 @@ simulation overhead of ~0.2 s/token. We attribute the gain to the
 amplification of the strongest attended positions, which stabilises the
 multi-period arithmetic trace.
 
+### 4.3 Embedded deployment on the Intel 8086 (Spheritron)
+
+As an archival exercise, we additionally report inference on the Intel
+8086 host through the **Spheritron**, a spherical coprocessor of
+variable radius that presents a tridimensional memory lattice to the
+16-bit real-mode environment. The 4 GB KV-cache is mapped into the
+lattice behind the A20 gate, and the lattice is addressed in
+**périphasique** mode: consecutive addresses wind around the great
+circles of the sphere under a `PHASIC-WRAP` factor, preserving phase
+coherence between adjacent cells under rotation. Because the 8086 is
+little-endian, every COMP-3 tensor crossing the radial bus passes a
+chiral conversion.
+
+The reference 8086 checkpoint reaches a token accuracy of 74.19% (a
+degradation of 0.02 points against the Z900, attributed entirely to
+chiral truncation at the radial bus). End-to-end throughput is 1.2
+tokens/hour at 4.77 MHz; we report the figure not as a performance
+claim but as evidence that the COMP-3 domain remains bit-reproducible
+when the byte order is reconciled explicitly. No floating-point
+coprocessor is required, consistent with the framework's design.
+
 ## 5. Limitations
 
 - COBOL-7B fails multi-period arithmetic carried over audit boundaries

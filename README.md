@@ -56,6 +56,15 @@ Now, in the interest of archival purposes, the source code has been published to
   QASM-COBOL circuit transpiler.
 - **Legacy Platform Support**: Native bridges for IBM AS/400 (ILE,
   DB2 for i, CCSID) and IBM 3090 (JCL, CICS, VSAM, SVC 99).
+- **Periphasic Integration**: the periphasic (périphasique) addressing
+  scheme — lattice addresses wound around the great circles of the
+  Spheritron sphere — is enabled for two targets only: **Intel 8086**
+  and **Apple Silicon M5**.
+- **Intel 8086 (Spheritron)**: Spherical coprocessor with
+  tridimensional memory lattice, periphasic addressing, and A20-gate
+  access to the paged KV-cache.
+- **Apple Silicon M5 (Spheritron)**: Spheritron coprocessor on the
+  ARM64 host with periphasic addressing and chiral conversion.
 - **Discourse Triage**: Subversive Index scoring over the REASON
   probes, per the 2003 EBCI doctrine.
 
@@ -104,22 +113,27 @@ The framework is implemented as 27 COBOL subprograms under `src/`:
 | Transformer stack    | `neural_ops.cbl`, `tokenizer.cbl`, `embedding.cbl`, `attention.cbl`, `sampler.cbl`, `kv_cache.cbl`, `inference_engine.cbl` |
 | Training & retrieval | `data_loader.cbl`, `fine_tune.cbl`, `eval.cbl`, `quantizer.cbl`, `embeddings_db.cbl`, `rag.cbl`, `prompt_templates.cbl`, `chat.cbl` |
 | Quantum (COBOL-Q)    | `quantum_ops.cbl`, `qasm_compiler.cbl`, `quantum_attention.cbl`         |
-| Platform bridges     | `as400_bridge.cbl`, `mvs_bridge.cbl`                                    |
+| Platform bridges     | `as400_bridge.cbl`, `mvs_bridge.cbl`, `spht_bridge.cbl` |
 | Discourse triage     | `discourse_triage.cbl`                                                  |
 
 ## Legacy Platform Support
 
-The framework runs on three mainframe platforms, selected through
-`config.dat PLATFORM`:
+The framework runs on three mainframe platforms plus two embedded
+targets — the Intel 8086 and Apple Silicon M5 — selected through
+`config.dat PLATFORM`. The periphasic integration is exclusive to these
+two targets:
 
 | Platform   | Value    | CCSID | Bridge            | Features                          |
 |------------|----------|-------|-------------------|-----------------------------------|
 | IBM S/370  | S/370    | 0037  | (native)          | Flat-file KV-cache                |
 | IBM AS/400 | OS-400   | 0500  | `as400_bridge.cbl`| ILE, DB2 for i, RPG interop       |
 | IBM 3090   | MVS-3090 | 0037  | `mvs_bridge.cbl`  | JCL batch, CICS, VSAM ESDS, SVC 99|
+| Intel 8086 | PC-8086  | 0437  | `spht_bridge.cbl` | Spheritron 3D lattice, A20 gate, chiral, periphasic |
+| Apple M5   | M5-ARM64 | 0819  | `spht_bridge.cbl` | Spheritron 3D lattice, ARM64, chiral, periphasic |
 
 See the [legacy integration guide](docs/legacy-integration.md) for the
-integration, migration, and testing procedure on AS/400 and IBM 3090.
+integration, migration, and testing procedure on AS/400, IBM 3090, and
+the periphasic targets (Intel 8086 and Apple Silicon M5).
 
 ## Quantum-Native Layer (COBOL-Q)
 
@@ -189,6 +203,7 @@ cobc -x quantum_attention.cbl -o quantum_attention
 # Platform bridges & triage
 cobc -x as400_bridge.cbl -o as400_bridge
 cobc -x mvs_bridge.cbl -o mvs_bridge
+cobc -x spht_bridge.cbl -o spht_bridge
 cobc -x discourse_triage.cbl -o discourse_triage
 ```
 
@@ -214,6 +229,7 @@ cobc -x ../tests/test_attention.cbl -o ../test_attention
 cobc -x ../tests/test_quantum_ops.cbl -o ../test_quantum_ops
 cobc -x ../tests/test_as400_bridge.cbl -o ../test_as400_bridge
 cobc -x ../tests/test_mvs_bridge.cbl -o ../test_mvs_bridge
+cobc -x ../tests/test_spht_bridge.cbl -o ../test_spht_bridge
 cd ..
 ./test_llm_framework
 ./test_sampler
@@ -222,6 +238,7 @@ cd ..
 ./test_quantum_ops
 ./test_as400_bridge
 ./test_mvs_bridge
+./test_spht_bridge
 ```
 
 Each test prints a `Test Passed` / `Test Failed` verdict.
@@ -244,7 +261,7 @@ Each test prints a `Test Passed` / `Test Failed` verdict.
 The framework uses a configuration file (config.dat) to set parameters such as maximum tokens, model path, log level, and threshold values. Ensure this file is present in the working directory. An example content for config.dat:
 
 ```bash
-00256models/cobol-q7.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    0016circuits/quantum-attention.qasm                                 0.001MVS-30900037
+00256models/cobol-q7.llm                               INFO      085.000.800.900040000000000020010701000008192TEMP    0016circuits/quantum-attention.qasm                                 0.001MVS-3090003700500008lattice.bin
 
 ```
 
@@ -263,8 +280,11 @@ The framework uses a configuration file (config.dat) to set parameters such as m
 * QUBITS (4 digits): Size of the quantum register for COBOL-Q (max 16). Example: 0016
 * CIRCUIT-PATH (64 characters): Path to the QASM circuit executed by the QASM-COMPILER. Example: circuits/quantum-attention.qasm
 * DECOHERENCE (5 characters, including 3 decimals): Decoherence budget for the simulated quantum layer. Example: 0.001
-* PLATFORM (8 characters): Target legacy platform. Valid values are S/370, OS-400, and MVS-3090. Example: MVS-3090
-* CCSID (4 digits): Coded character set identifier. Valid values are 0037 (EBCDIC US) and 0500 (EBCDIC international). Example: 0037
+* PLATFORM (8 characters): Target legacy platform. Valid values are S/370, OS-400, MVS-3090, PC-8086, and M5-ARM64. Example: MVS-3090
+* CCSID (4 digits): Coded character set identifier. Valid values are 0037 (EBCDIC US), 0500 (EBCDIC international), 0437 (IBM PC / MS-DOS), and 0819 (ASCII). Example: 0037
+* SPHERE-RADIUS (4 digits): Radius of the Spheritron lattice in cells (Intel 8086 and Apple Silicon M5 only). Example: 0050
+* PHASIC-WRAP (4 digits): Périphasique wrapping factor of the Spheritron addressing window. Example: 0008
+* LATTICE-PATH (50 characters): Path to the volumetric lattice backing file (Intel 8086 only). Example: lattice.bin
 
 See the [API reference](docs/api-reference.md) for the complete field
 layout and subprogram catalogue.

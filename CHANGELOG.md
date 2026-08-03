@@ -5,6 +5,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/).
 Versions are semver-compatible, with a strong backward-compatibility
 policy on the `CALL` interface.
 
+## [0.8.0] - 2024-08-02
+
+### Added
+- **Periphasic integration**: the periphasic (périphasique) addressing
+  scheme — lattice addresses wound around the great circles of the
+  Spheritron sphere — is available for two targets only: **Intel 8086**
+  and **Apple Silicon M5**.
+- `SPHT-BRIDGE` adapter for the Intel 8086 (PC-DOS, real mode) through
+  the **Spheritron** spherical coprocessor: A20-gate lift, chiral
+  byte-order conversion, tridimensional lattice KV-cache, and
+  periphasic addressing.
+  *Contributed by Dr. Viktor A. Slivkin (SAC Retro-Computing and
+  Microarchitecture Group).*
+- `SPHT-BRIDGE` adapter for the **Apple Silicon M5** (ARM64) through
+  the Spheritron coprocessor, sharing the periphasic addressing window
+  and chiral conversion with the Intel 8086 target.
+- Legacy integration guide sections for the Intel 8086 platform:
+  `docs/legacy-integration.md` §1.3, migration tables, CCSID 0437
+  matrix, and troubleshooting.
+- `config.dat` Spheritron fields: SPHERE-RADIUS, PHASIC-WRAP,
+  LATTICE-PATH; `PLATFORM` values `PC-8086` and `M5-ARM64`.
+- `test_spht_bridge.cbl` (verifies the A20 gate lift returns `A20-OK`).
+- Intel 8086 and Apple Silicon M5 platform rows in the README and model
+  cards.
+
 ## [0.7.0] - 2024-08-02
 
 ### Added

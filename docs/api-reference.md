@@ -26,6 +26,13 @@ EBCDIC):
 | DECOHERENCE   | 186    | 5     | 0.001       |
 | PLATFORM      | 191    | 8     | MVS-3090    |
 | CCSID         | 199    | 4     | 0037        |
+| SPHERE-RADIUS | 203    | 4     | 0050        |
+| PHASIC-WRAP   | 207    | 4     | 0008        |
+| LATTICE-PATH  | 211    | 50    | lattice.bin |
+
+`SPHERE-RADIUS` and `PHASIC-WRAP` apply only on the Intel 8086 platform
+(`PLATFORM` value `PC-8086`, `CCSID` 0437). The remaining platforms
+leave them unused; see the [legacy integration guide](legacy-integration.md).
 
 ## Subprogram Catalogue
 
@@ -133,6 +140,24 @@ CALL 'MVS-BRIDGE' USING mode, commarea, commarea-len,
 
 See the [legacy integration guide](legacy-integration.md) for the
 deployment and migration procedure on AS/400 and IBM 3090.
+
+### SPHT-BRIDGE
+
+```
+CALL 'SPHT-BRIDGE' USING mode, lattice-x, lattice-y,
+                         lattice-z, data, status.
+```
+
+- `mode`: A20-OPEN | CHIRAL | LATTICE-PUT | LATTICE-GET |
+          INT21 | SEG-LOAD | ROTATE
+
+Adapter for the Intel 8086 (PC-DOS, real mode) through the Spheritron
+coprocessor. The Spheritron exposes a tridimensional memory lattice
+addressed in périphasique mode; `lattice-x/y/z` select the lattice
+point and `data` carries one COMP-3 cell. The `A20-OPEN` operation
+lifts the gate so the 4 GB KV-cache maps behind the 1 MiB barrier, and
+`CHIRAL` converts between the little-endian 8086 word order and
+big-endian COMP-3.
 
 ### DISCOURSE-TRIAGE
 
